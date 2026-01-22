@@ -154,7 +154,7 @@ select 'Inserting data into active_list_type...';
 LOCK TABLES `active_list_type` WRITE;
 /*!40000 ALTER TABLE `active_list_type` DISABLE KEYS */;
 
-INSERT INTO active_list_type VALUES 
+INSERT INTO active_list_type VALUES
     (1,'Allergy','An Allergy the Patient may have',1,'2010-05-28 00:00:00.0',false,24839,null,null,'96f4f603-6a99-11df-a648-37a07f9c90fb'),
     (2,'Problem','A Problem the Patient may have',1,'2010-05-28 00:00:00.0',false,5,null,null,'a0c7422b-6a99-11df-a648-37a07f9c90fb');
 
@@ -221,7 +221,7 @@ select 'Inserting data into address_hierarchy_type...';
 LOCK TABLES `address_hierarchy_type` WRITE;
 /*!40000 ALTER TABLE `address_hierarchy_type` DISABLE KEYS */;
 
-INSERT INTO address_hierarchy_type VALUES 
+INSERT INTO address_hierarchy_type VALUES
     (1,'Country',null,2),
     (2,'Province',1,3),
     (3,'District',2,4),
@@ -386,7 +386,7 @@ select 'Inserting data into concept...';
 LOCK TABLES `concept` WRITE;
 /*!40000 ALTER TABLE `concept` DISABLE KEYS */;
 
-INSERT INTO concept VALUES 
+INSERT INTO concept VALUES
     (1,false,'','',null,4,4,false,24839,'2004-01-01 00:00:00.0','',12,'2005-02-16 00:13:08.0',1,null,null,'3ccc412e-26fe-102b-80cb-0017a47871b2'),
     (2,false,'','',null,4,4,false,5,'2004-01-01 00:00:00.0','',12,'2005-03-03 17:51:12.0',24839,null,null,'3ccc44ee-26fe-102b-80cb-0017a47871b2'),
     (3,false,'','',null,4,4,false,5,'2004-01-01 07:00:00.0',null,24839,'2012-09-26 20:06:34.0',7,null,null,'3ccc4764-26fe-102b-80cb-0017a47871b2'),
@@ -7043,7 +7043,7 @@ select 'Inserting data into concept_answer...';
 LOCK TABLES `concept_answer` WRITE;
 /*!40000 ALTER TABLE `concept_answer` DISABLE KEYS */;
 
-INSERT INTO concept_answer VALUES 
+INSERT INTO concept_answer VALUES
     (1,12,1115,null,7,'2005-01-26 07:00:00.0','3d38cf1a-26fe-102b-80cb-0017a47871b2',1.0),
     (2,12,1136,null,6,'2005-01-26 07:00:00.0','3d38d262-26fe-102b-80cb-0017a47871b2',2.0),
     (3,12,1137,null,24839,'2005-01-26 07:00:00.0','3d38d474-26fe-102b-80cb-0017a47871b2',3.0),
@@ -13182,7 +13182,7 @@ select 'Inserting data into concept_class...';
 LOCK TABLES `concept_class` WRITE;
 /*!40000 ALTER TABLE `concept_class` DISABLE KEYS */;
 
-INSERT INTO concept_class VALUES 
+INSERT INTO concept_class VALUES
     (1,'Test','Acq. during patient encounter (vitals, labs, etc.)',6,'2004-02-02 07:00:00.0',false,7,null,null,'8d4907b2-c2cc-11de-8d13-0010c6dffd0f'),
     (2,'Procedure','Describes a clinical procedure',1,'2004-03-02 00:00:00.0',false,7,null,null,'8d490bf4-c2cc-11de-8d13-0010c6dffd0f'),
     (3,'Drug','Drug',6,'2004-02-02 07:00:00.0',false,1,null,null,'8d490dfc-c2cc-11de-8d13-0010c6dffd0f'),
@@ -13268,7 +13268,7 @@ select 'Inserting data into concept_datatype...';
 LOCK TABLES `concept_datatype` WRITE;
 /*!40000 ALTER TABLE `concept_datatype` DISABLE KEYS */;
 
-INSERT INTO concept_datatype VALUES 
+INSERT INTO concept_datatype VALUES
     (1,'Numeric','NM','Numeric value, including integer or float (e.g., creatinine, weight)',5,'2004-02-02 07:00:00.0',false,12,null,null,'8d4a4488-c2cc-11de-8d13-0010c6dffd0f'),
     (2,'Coded','CWE','Value determined by term dictionary lookup (i.e., term identifier)',5,'2004-02-02 07:00:00.0',false,24839,null,null,'8d4a48b6-c2cc-11de-8d13-0010c6dffd0f'),
     (3,'Text','ST','Free text',7,'2004-02-02 07:00:00.0',false,12,null,null,'8d4a4ab4-c2cc-11de-8d13-0010c6dffd0f'),
@@ -13321,7 +13321,7 @@ select 'Inserting data into concept_description...';
 LOCK TABLES `concept_description` WRITE;
 /*!40000 ALTER TABLE `concept_description` DISABLE KEYS */;
 
-INSERT INTO concept_description VALUES 
+INSERT INTO concept_description VALUES
     (1,1,'Anemia due to bleeding or a hemorrhagic process.','en',7,'2004-01-01 00:00:00.0',24839,null,'ecd63692-07fe-102c-b5fa-0017a47871b2'),
     (2,2,'Anemia, due to the destruction or dissolution of red blood cells, with subsequent release of hemoglobin.','en',24839,'2004-01-01 00:00:00.0',5,null,'ecd63b56-07fe-102c-b5fa-0017a47871b2'),
     (3,3,'Anemia not due to other causes listed within the system.','en',7,'2004-01-01 07:00:00.0',5,'2011-11-17 15:52:14.0','ecd63ea8-07fe-102c-b5fa-0017a47871b2'),
@@ -15849,7 +15849,7 @@ Coded replies for Lesotho from IMAI.  ','en',6,'2006-10-18 18:30:50.0',5,null,'0
     (2507,2740,'The prophylaxis treatment is started','en',7,'2007-10-25 12:10:12.0',1,null,'ecf562e2-07fe-102c-b5fa-0017a47871b2'),
     (2508,2741,'The prophylaxis treatment continues','en',7,'2007-10-25 12:12:33.0',5,null,'ecf564f4-07fe-102c-b5fa-0017a47871b2'),
     (2509,2742,'Dosage ordered for prophylaxis','en',7,'2007-10-25 12:15:58.0',5,null,'ecf566d4-07fe-102c-b5fa-0017a47871b2'),
-    (2510,2743,'What criteria are present from all WHO Stage? 
+    (2510,2743,'What criteria are present from all WHO Stage?
 Note: only adult stages are currently added, but pediatric can be added here.','en',7,'2007-10-25 13:39:28.0',6,null,'0b39485e-15f5-102d-96e4-000c29c2a5d7'),
     (2511,2744,'The prophylaxis treatment is stopped','en',7,'2007-10-25 13:45:41.0',24839,null,'ecf568c8-07fe-102c-b5fa-0017a47871b2'),
     (2512,2833,'HIV/AIDS drugs','en',7,'2007-11-01 13:18:58.0',12,'2011-11-09 11:35:54.0','ed20ec32-07fe-102c-b5fa-0017a47871b2'),
@@ -15973,7 +15973,7 @@ Question in 6 mo psychosocial form ORACTA.','en',7,'2008-02-12 10:45:19.0',24839
     (2622,2949,'Do you own land?','en',7,'2008-02-12 11:05:58.0',12,null,'ed1f8c5c-07fe-102c-b5fa-0017a47871b2'),
     (2623,2950,'How many parcels of land?  Question of land ownership
 ','en',7,'2008-02-12 11:07:43.0',1,null,'0b3a1162-15f5-102d-96e4-000c29c2a5d7'),
-    (2624,2951,'Size of largest parcel in hectares.  Question of land ownership 
+    (2624,2951,'Size of largest parcel in hectares.  Question of land ownership
 ','en',7,'2008-02-12 11:09:17.0',6,null,'0b3a1248-15f5-102d-96e4-000c29c2a5d7'),
     (2625,2952,'Question of home ownership','en',7,'2008-02-12 11:11:29.0',5,null,'ed1f8dba-07fe-102c-b5fa-0017a47871b2'),
     (2626,2953,'Answer to question of home ownership','en',7,'2008-02-12 11:16:57.0',12,null,'ed1f6d44-07fe-102c-b5fa-0017a47871b2'),
@@ -17432,7 +17432,7 @@ Question in 6 mo psychosocial form ORACTA.','en',7,'2008-02-12 10:45:19.0',24839
     (4213,3474,'Plates are present when examining the heart ultrasound','en',7,'2008-07-07 09:03:26.0',7,null,'ed2673aa-07fe-102c-b5fa-0017a47871b2'),
     (4214,3475,'Width of the intima to media thickness on the cardiac ultrasound.','en',24839,'2008-07-07 09:04:54.0',6,null,'ed26a794-07fe-102c-b5fa-0017a47871b2'),
     (4215,3476,'Width of the intima to media thickness on the cardiac ultrasound.','en',5,'2008-07-07 09:07:06.0',24839,null,'ed26a99c-07fe-102c-b5fa-0017a47871b2'),
-    (4216,3477,'Observational measurement of the loudness of a murmur, level 1. 
+    (4216,3477,'Observational measurement of the loudness of a murmur, level 1.
 ','en',5,'2008-07-07 17:24:01.0',24839,'2011-08-08 19:55:33.0','0b457520-15f5-102d-96e4-000c29c2a5d7'),
     (4217,3478,'Observational measurement of the loudness of a murmur, 2 out of 6.
 ','en',6,'2008-07-07 17:24:52.0',12,'2011-08-08 19:55:33.0','0b457606-15f5-102d-96e4-000c29c2a5d7'),
@@ -18450,7 +18450,7 @@ worsens the asthma','en',7,'2010-04-01 13:36:30.0',24839,null,'8be5aed8-806b-466
     (5218,6756,'The patient is currently on insulin therapy (for diabetes)','en',7,'2010-05-28 19:47:54.0',12,null,'684e5fae-92ac-4883-ad7c-e380ef9062c2'),
     (5219,6757,'A patient state where medications are not used, but healthier nutrition, exercise and stress-relief.','en',7,'2010-05-28 19:50:08.0',6,null,'a425e543-4ab8-4bcb-aa27-99819635be88'),
     (5220,6758,'An asthma spacer is a type of add-on device used by an asthmatic person to increase the effectiveness of a metered-dose inhaler','en',24839,'2010-06-09 15:44:35.0',5,'2011-11-17 15:52:40.0','64ab5b8f-e49e-4120-af91-afa5aceb9afc'),
-    (5221,6759,'Free text description of what is ailing patient  
+    (5221,6759,'Free text description of what is ailing patient
 ','en',7,'2010-06-09 16:01:09.0',7,null,'850e7a71-23eb-447d-bbd8-fe95a7756c56'),
     (5222,6760,'Additional complaints besides the ones specifically asked. Question asked on encounter form in a boolean fashion.','en',7,'2010-06-09 16:07:26.0',5,null,'039e4cd0-b3da-4661-805d-4b96ddfe9cbd'),
     (5223,6761,'The predicted respiratory measure based on age and weight of patient.','en',12,'2010-06-10 17:54:57.0',7,'2010-06-12 11:24:14.0','7ff12c43-7ef5-4b59-96d9-6fb02b46675b'),
@@ -19187,7 +19187,7 @@ select 'Inserting data into concept_map_type...';
 LOCK TABLES `concept_map_type` WRITE;
 /*!40000 ALTER TABLE `concept_map_type` DISABLE KEYS */;
 
-INSERT INTO concept_map_type VALUES 
+INSERT INTO concept_map_type VALUES
     (1,'SAME-AS',null,7,'2012-06-08 00:00:00.0',7,null,false,false,6,null,null,'35543629-7d8c-11e1-909d-c80aa9edcf4e'),
     (2,'NARROWER-THAN',null,6,'2012-06-08 00:00:00.0',12,null,false,false,12,null,null,'43ac5109-7d8c-11e1-909d-c80aa9edcf4e'),
     (3,'BROADER-THAN',null,5,'2012-06-08 00:00:00.0',1,null,false,false,6,null,null,'4b9d9421-7d8c-11e1-909d-c80aa9edcf4e'),
@@ -19304,7 +19304,7 @@ select 'Inserting data into concept_name...';
 LOCK TABLES `concept_name` WRITE;
 /*!40000 ALTER TABLE `concept_name` DISABLE KEYS */;
 
-INSERT INTO concept_name VALUES 
+INSERT INTO concept_name VALUES
     (1,'ANEMIA, BLOOD LOSS','en',12,'2004-01-01 00:00:00.0',1,false,6,null,null,'3e09892a-26fe-102b-80cb-0017a47871b2','FULLY_SPECIFIED',false),
     (2,'ANEMIA, HEMOLYSIS','en',24839,'2004-01-01 00:00:00.0',2,false,6,null,null,'3e098cd6-26fe-102b-80cb-0017a47871b2','FULLY_SPECIFIED',false),
     (3,'ANEMIA','en',12,'2004-01-01 07:00:00.0',3,false,6,null,null,'3e098f38-26fe-102b-80cb-0017a47871b2','FULLY_SPECIFIED',true),
@@ -29306,7 +29306,7 @@ INSERT INTO concept_name VALUES
     (1314,'PLANIFICATION DE MAISON','fr',7,'2010-06-29 13:03:17.0',10830,false,1,null,null,'f600909e-d5db-102d-ad2a-000c29c2a5d7',null,true),
     (1315,'MATERIEL AU SOL','fr',7,'2010-06-29 13:03:17.0',10831,false,1,null,null,'f600b4ac-d5db-102d-ad2a-000c29c2a5d7',null,false);
 
-INSERT INTO concept_name VALUES 
+INSERT INTO concept_name VALUES
     (1318,'PATIENT POSSÈDE UNE RADIO','fr',7,'2010-06-29 13:03:17.0',10834,false,7,null,null,'f60113d4-d5db-102d-ad2a-000c29c2a5d7',null,false),
     (1319,'MATERIEL DE TOITURE','fr',7,'2010-06-29 13:03:17.0',10835,false,24839,null,null,'f6012c5c-d5db-102d-ad2a-000c29c2a5d7',null,true),
     (1321,'CHAUME','fr',7,'2010-06-29 13:03:17.0',10837,false,7,null,null,'f6018fd0-d5db-102d-ad2a-000c29c2a5d7',null,true),
@@ -34714,7 +34714,7 @@ select 'Inserting data into concept_name_tag...';
 LOCK TABLES `concept_name_tag` WRITE;
 /*!40000 ALTER TABLE `concept_name_tag` DISABLE KEYS */;
 
-INSERT INTO concept_name_tag VALUES 
+INSERT INTO concept_name_tag VALUES
     (18,'short_','short general',24761,'2009-01-27 10:48:57.0',false,null,null,null,'4b0b37e0-f085-4069-bf40-988b31215eda'),
     (19,'short_en','short english',24761,'2009-01-27 10:48:57.0',false,null,null,null,'8da5396d-c375-4f8a-9646-61d948b75624'),
     (20,'short_fr','short french',24821,'2009-02-05 20:45:25.0',false,null,null,null,'693ec090-63d8-450b-8b6a-449f58b0066b');
@@ -34747,7 +34747,7 @@ select 'Inserting data into concept_name_tag_map...';
 LOCK TABLES `concept_name_tag_map` WRITE;
 /*!40000 ALTER TABLE `concept_name_tag_map` DISABLE KEYS */;
 
-INSERT INTO concept_name_tag_map VALUES 
+INSERT INTO concept_name_tag_map VALUES
     (8002,18),
     (8002,19),
     (8012,18),
@@ -34899,7 +34899,7 @@ select 'Inserting data into concept_numeric...';
 LOCK TABLES `concept_numeric` WRITE;
 /*!40000 ALTER TABLE `concept_numeric` DISABLE KEYS */;
 
-INSERT INTO concept_numeric VALUES 
+INSERT INTO concept_numeric VALUES
     (9,null,null,null,null,null,null,null,false),
     (21,20.0,null,null,2.0,null,11.5,'g/dl',true),
     (301,null,null,null,null,null,null,null,false),
@@ -35956,7 +35956,7 @@ select 'Inserting data into concept_reference_map...';
 LOCK TABLES `concept_reference_map` WRITE;
 /*!40000 ALTER TABLE `concept_reference_map` DISABLE KEYS */;
 
-INSERT INTO concept_reference_map VALUES 
+INSERT INTO concept_reference_map VALUES
     (1,6,'2012-06-07 16:16:59.0',6988,'0066ecae-0244-40f5-849a-43551225f81a',1,2,24839,null),
     (2,24839,'2012-06-07 16:16:59.0',6989,'ebcd6629-ed11-4936-81e2-e45c831b064e',993,2,6,null),
     (3,7,'2012-06-07 16:16:59.0',6990,'1af827a0-261e-46ca-b888-5a3d1e0c8949',3,2,12,null),
@@ -45958,7 +45958,7 @@ INSERT INTO concept_reference_map VALUES
     (10811,7,'2012-06-07 16:54:01.0',6284,'75ade668-4943-102e-96e9-000c29c2a5d7',10811,2,6,null),
     (10812,1,'2012-06-07 16:54:01.0',6285,'75ade7da-4943-102e-96e9-000c29c2a5d7',10812,2,1,null);
 
-INSERT INTO concept_reference_map VALUES 
+INSERT INTO concept_reference_map VALUES
     (10813,5,'2012-06-07 16:54:01.0',6286,'75ade942-4943-102e-96e9-000c29c2a5d7',10813,2,5,null),
     (10814,5,'2012-06-07 16:54:01.0',6287,'75adeaaa-4943-102e-96e9-000c29c2a5d7',10814,2,6,null),
     (10815,24839,'2012-06-07 16:54:01.0',6288,'75adec12-4943-102e-96e9-000c29c2a5d7',10815,2,1,null),
@@ -48030,7 +48030,7 @@ select 'Inserting data into concept_reference_source...';
 LOCK TABLES `concept_reference_source` WRITE;
 /*!40000 ALTER TABLE `concept_reference_source` DISABLE KEYS */;
 
-INSERT INTO concept_reference_source VALUES 
+INSERT INTO concept_reference_source VALUES
     (1,'local','Local definitions','99001',1,'2005-09-23 00:00:00.0',false,12,null,null,'3f65b686-26fe-102b-80cb-0017a47871b2'),
     (2,'LOINC','LOINC (www.loinc.org)','LN',1,'2005-09-23 00:00:00.0',false,7,null,null,'3f65bb4a-26fe-102b-80cb-0017a47871b2'),
     (3,'ICD-10-WHO','ICD-10 WHO Version',null,5,'2010-04-25 17:13:15.0',false,7,null,null,'3f65bd34-26fe-102b-80cb-0017a47871b2'),
@@ -48095,7 +48095,7 @@ select 'Inserting data into concept_reference_term...';
 LOCK TABLES `concept_reference_term` WRITE;
 /*!40000 ALTER TABLE `concept_reference_term` DISABLE KEYS */;
 
-INSERT INTO concept_reference_term VALUES 
+INSERT INTO concept_reference_term VALUES
     (1,1,null,'6986',null,'NULL',7,'2012-06-07 00:00:00.0',null,5,false,1,null,null,'2b0f7a23-8384-321e-a2fa-0643c7ba76dd'),
     (3,1,null,'6981',null,'NULL',24839,'2012-06-07 00:00:00.0',null,5,false,6,null,null,'f1d71cf3-fb6a-3435-a220-4cc1ea63fc29'),
     (4,1,null,'6980',null,'NULL',1,'2012-06-07 00:00:00.0',null,24839,false,1,null,null,'40bfdab7-3cb3-39d5-815a-0239682553ff'),
@@ -58097,7 +58097,7 @@ INSERT INTO concept_reference_term VALUES
     (10872,5,null,'DATE PERSON RESPONSIBLE FOR PATIENT CHANGED',null,'NULL',12,'2012-06-07 00:00:00.0',null,24839,false,1,null,null,'9c6fd2c8-022a-32ef-a649-66ce0078798b'),
     (10873,5,null,'DAILY VISIT BY RESPONSIBLE PERSON',null,'NULL',6,'2012-06-07 00:00:00.0',null,7,false,24839,null,null,'31e3e72e-06dd-3a64-a6c9-9ffe1a79fdc2');
 
-INSERT INTO concept_reference_term VALUES 
+INSERT INTO concept_reference_term VALUES
     (10874,5,null,'REASON PATIENT NOT VISITED DAILY BY RESPONSIBLE PERSON NON-CODED',null,'NULL',7,'2012-06-07 00:00:00.0',null,24839,false,12,null,null,'6cf50174-2226-3d75-9452-3b4c2ad76246'),
     (10875,5,null,'NAUSEA OR VOMITING',null,'NULL',5,'2012-06-07 00:00:00.0',null,12,false,1,null,null,'2120046f-054f-3978-921c-ed65d49b0848'),
     (10876,5,null,'ELECTROLYTE DISORDER',null,'NULL',12,'2012-06-07 00:00:00.0',null,5,false,6,null,null,'7b62d3c4-f620-38bd-9492-0eec7d2dc317'),
@@ -60007,7 +60007,7 @@ select 'Inserting data into concept_set...';
 LOCK TABLES `concept_set` WRITE;
 /*!40000 ALTER TABLE `concept_set` DISABLE KEYS */;
 
-INSERT INTO concept_set VALUES 
+INSERT INTO concept_set VALUES
     (1,12,2472,1.0,24839,'2007-06-26 13:14:44.0','3f27c038-26fe-102b-80cb-0017a47871b2'),
     (2,12,3400,0.0,6,'2008-06-30 09:05:09.0','6af232d2-1122-4f16-9253-c7b44bc3bb22'),
     (3,21,1019,1.0,12,'2005-12-15 20:26:49.0','3f27c330-26fe-102b-80cb-0017a47871b2'),
@@ -62354,7 +62354,7 @@ select 'Inserting data into concept_set_derived...';
 LOCK TABLES `concept_set_derived` WRITE;
 /*!40000 ALTER TABLE `concept_set_derived` DISABLE KEYS */;
 
-INSERT INTO concept_set_derived VALUES 
+INSERT INTO concept_set_derived VALUES
     (21,1019,2.0),
     (29,1202,3.0),
     (36,1197,4.0),
@@ -62623,7 +62623,7 @@ select 'Inserting data into concept_state_conversion...';
 LOCK TABLES `concept_state_conversion` WRITE;
 /*!40000 ALTER TABLE `concept_state_conversion` DISABLE KEYS */;
 
-INSERT INTO concept_state_conversion VALUES 
+INSERT INTO concept_state_conversion VALUES
     (1,1742,3,14,'0bac8080-15f5-102d-96e4-000c29c2a5d7'),
     (2,1744,3,15,'0bac824c-15f5-102d-96e4-000c29c2a5d7'),
     (3,1743,3,16,'0bac836e-15f5-102d-96e4-000c29c2a5d7'),
@@ -62669,7 +62669,7 @@ select 'Inserting data into concept_stop_word...';
 LOCK TABLES `concept_stop_word` WRITE;
 /*!40000 ALTER TABLE `concept_stop_word` DISABLE KEYS */;
 
-INSERT INTO concept_stop_word VALUES 
+INSERT INTO concept_stop_word VALUES
     (1,'A','en','f5f45540-e2a7-11df-87ae-18a905e044dc'),
     (2,'AND','en','f5f469ae-e2a7-11df-87ae-18a905e044dc'),
     (3,'AT','en','f5f47070-e2a7-11df-87ae-18a905e044dc'),
@@ -62759,7 +62759,7 @@ select 'Inserting data into drug...';
 LOCK TABLES `drug` WRITE;
 /*!40000 ALTER TABLE `drug` DISABLE KEYS */;
 
-INSERT INTO drug VALUES 
+INSERT INTO drug VALUES
     (2,792,'Triomune-30 (Stavudine 30 mg/Lamivudine 150 mg/Nevirapine 200 mg)',true,4020,null,null,null,3327,null,24839,'2005-02-24 00:00:00.0',false,12,null,null,'42f00b94-26fe-102b-80cb-0017a47871b2','2012-09-27 20:06:50.0',6),
     (3,792,'Triomune-40',true,null,1.0,null,null,null,'tab(s)',24839,'2005-02-24 00:00:00.0',false,1,null,null,'42f00efa-26fe-102b-80cb-0017a47871b2',null,6),
     (5,625,'d4T 30',false,null,30.0,null,null,null,'mg',1,'2005-02-24 00:00:00.0',false,7,null,null,'42f010f8-26fe-102b-80cb-0017a47871b2',null,12),
@@ -63195,7 +63195,7 @@ select 'Inserting data into encounter_role...';
 LOCK TABLES `encounter_role` WRITE;
 /*!40000 ALTER TABLE `encounter_role` DISABLE KEYS */;
 
-INSERT INTO encounter_role VALUES 
+INSERT INTO encounter_role VALUES
     (1,'Unknown','Unknown encounter role for legacy providers with no encounter role set',1,'2011-08-18 14:00:00.0',12,'2012-10-24 04:17:25.0',false,1,null,null,'a0b03050-c99b-11e0-9572-0800200c9a66'),
     (2,'Primary Care Registration Recorder','This role represents primrary care registration during a primary care registration encounter.',1,'2012-06-08 16:48:03.0',12,'2012-10-23 22:26:32.0',false,7,null,null,'e8a0fb6a-aba5-11e1-b9e7-002713655c9f');
 
@@ -63238,7 +63238,7 @@ select 'Inserting data into encounter_type...';
 LOCK TABLES `encounter_type` WRITE;
 /*!40000 ALTER TABLE `encounter_type` DISABLE KEYS */;
 
-INSERT INTO encounter_type VALUES 
+INSERT INTO encounter_type VALUES
     (1,'ADULT INITIAL VISIT','Outpatient Adult Initial Visit',12,'2005-02-24 00:00:00.0','4d911d04-26fe-102b-80cb-0017a47871b2',false,12,null,null),
     (2,'ADULT RETURN VISIT','Outpatient Adult Return Visit',6,'2005-02-24 00:00:00.0','4d911f5c-26fe-102b-80cb-0017a47871b2',false,5,null,null),
     (3,'PEDIATRIC INITIAL VISIT','Outpaitent Pediatric Initial Visit',1,'2005-02-24 00:00:00.0','4d9120ba-26fe-102b-80cb-0017a47871b2',false,1,null,null),
@@ -63391,7 +63391,7 @@ select 'Inserting data into field_type...';
 LOCK TABLES `field_type` WRITE;
 /*!40000 ALTER TABLE `field_type` DISABLE KEYS */;
 
-INSERT INTO field_type VALUES 
+INSERT INTO field_type VALUES
     (1,'Concept','',false,5,'2005-02-22 12:43:00.0','8d5e7d7c-c2cc-11de-8d13-0010c6dffd0f'),
     (2,'Database element','',false,6,'2005-02-22 12:43:00.0','8d5e8196-c2cc-11de-8d13-0010c6dffd0f'),
     (3,'Set of Concepts','',true,7,'2005-02-22 12:43:00.0','8d5e836c-c2cc-11de-8d13-0010c6dffd0f'),
@@ -63451,7 +63451,7 @@ select 'Inserting data into form...';
 LOCK TABLES `form` WRITE;
 /*!40000 ALTER TABLE `form` DISABLE KEYS */;
 
-INSERT INTO form VALUES 
+INSERT INTO form VALUES
     (1,'BROKEN FORM','0.1',1,false,'This form contains only the common/core elements needed for most forms',1,'Values removed during database export','Values removed during database export',1,'2006-07-18 11:02:38.0',7,'2007-05-26 15:40:56.0',true,12,'2007-01-31 11:33:51.0','Don\'t want to show','4e7c1dc2-26fe-102b-80cb-0017a47871b2'),
     (2,'OLD - DONNEES DE BASE (RWANDA)','0.3',88,false,'DONNEES DE BASE - Intake Form for Inshuiti Mu Buzima (Programme TB / VIH)',1,'Values removed during database export','Values removed during database export',1,'2006-06-21 17:13:52.0',7,'2010-05-30 20:26:21.0',true,7,'2010-05-30 20:26:21.0','old form','4e7c2c90-26fe-102b-80cb-0017a47871b2'),
     (27,'OLD - RENDEZ-VOUS (RWANDA)','0.1',38,false,'Return visit form (April 6, 2006 version)',2,'Values removed during database export','Values removed during database export',1,'2006-07-18 11:02:38.0',7,'2010-05-30 20:26:52.0',true,7,'2010-05-30 20:26:40.0','old form','4e7c3d7a-26fe-102b-80cb-0017a47871b2'),
@@ -63809,7 +63809,7 @@ select 'Inserting data into global_property...';
 LOCK TABLES `global_property` WRITE;
 /*!40000 ALTER TABLE `global_property` DISABLE KEYS */;
 
-INSERT INTO global_property VALUES 
+INSERT INTO global_property VALUES
     ('addresshierarchyrwanda.database_version','1.3.2',null,'fab9f129-baec-4de7-99c4-29718b00385c',null,null,null,null),
     ('addresshierarchyrwanda.mandatory','false',null,'e658100c-90b7-4d96-a170-2d05025df5f4',null,null,null,null),
     ('addresshierarchyrwanda.started','true',null,'128dd725-60fd-45ee-b86c-fb7b85377c32',null,null,null,null),
@@ -63946,9 +63946,9 @@ Z_SCORE_WEIGHT = c9d8c9db-518c-4a00-985d-d2fc8ac1f739
 Z_SCORE_HEIGHT = 6d4b1720-f45c-4069-98d9-e7e865105a7a
 Z_SCORE_BMI = 7085
 HEIGHT_WEIGHT_PERCENTILE = 2438e295-d9da-4d5c-bacc-13c313e34755
-GROWTH_ENCOUNTER = 21 
-BMI = 2137 
-PatientIdentiferId_IMB = 5 
+GROWTH_ENCOUNTER = 21
+BMI = 2137
+PatientIdentiferId_IMB = 5
 PatientIdentiferId_PC = 8','paste in a properties text file containing key, and local ID for objects.  For more explanation,
 see the ConceptDictionary class of this module.','15872c0c-3b37-48bc-b81f-2815aea3d941',null,null,null,null),
     ('heightweighttracker.DisplayLink','false','If true the link will be displayed on the patient dashboard','007fc2a0-1cca-438d-8037-4197e28efa3b',null,null,null,null),
@@ -63977,9 +63977,9 @@ see the ConceptDictionary class of this module.','15872c0c-3b37-48bc-b81f-2815ae
     ('htmlformflowsheet.patientChartFormIds','88:11,100:16,128:12,147:11,152:14,162:15,174:13,188:18','Comma delimited formIds of all htmlforms that are the *parent* forms for patient charts.  Do not list
 patient chart sub forms in this list.  If you would like for links to be displayed, you can add entries
 of the following format:   formId:programId1|programId2,formId:programId1, programIds','d57914f1-dc3a-413b-85a8-ac1d443c37da',null,null,null,null),
-    ('htmlformflowsheet.programConfigurationMap','{}','This property represents the EXACT javascript syntax for a map from programID to htmlformflowsheet url configuration.  
+    ('htmlformflowsheet.programConfigurationMap','{}','This property represents the EXACT javascript syntax for a map from programID to htmlformflowsheet url configuration.
 For example, {8:"configuration=S:DDB:76:LAST,F:VISITS:77",9:"configuration=S:DDB:88:LAST,F:VISITS:89"}
-means that there are two mapped programs -- program 8 and program 9.  For each of these programs, the url parameters to add are 
+means that there are two mapped programs -- program 8 and program 9.  For each of these programs, the url parameters to add are
 defined in the values for each key.','acfea7fd-31fc-44e7-b358-e5fa2fa275d7',null,null,null,null),
     ('htmlformflowsheet.showMdrtbCatIVLink','false','adds the cat IV treatment card link to the form list in the mdrtb module.  valid values are blank, true, false','2363951c-6080-43bf-97cd-d1b664b28a58',null,null,null,null),
     ('htmlformflowsheet.started','true',null,'fb46cddf-0e56-4f6d-99a2-f3a7687d75a6',null,null,null,null),
@@ -64042,8 +64042,8 @@ defined in the values for each key.','acfea7fd-31fc-44e7-b358-e5fa2fa275d7',null
     ('metadatasharing.mandatory','false',null,'bc3c8d90-cbc5-4bc3-a5be-46fcb44a2ce7',null,null,null,null),
     ('metadatasharing.notify','false',null,'3a21d7a9-b722-4711-b907-b9ead2bb77c2',null,null,null,null),
     ('metadatasharing.persistIdsForClasses',null,'A comma separated list of class package/names that denotes classes to try and persist ids for. Common options: org.openmrs.Concept,org.openmrs.Form,org.openmrs.ConceptDatatype,org.openmrs.ConceptClass,org.openmrs.EncounterType,org.openmrs.IdentifierType,org.openmrs.RelationshipType,org.openmrs.Location','a3375e6d-8039-4609-9df2-9f9aefdbe514',null,null,null,null),
-    ('metadatasharing.preferredConceptSourceIds',null,'Comma-separated list of concept source Ids for preferred sources, in case an incoming concept 
-has duplicate mappings to any of these sources, no confirmation will be required unless its 
+    ('metadatasharing.preferredConceptSourceIds',null,'Comma-separated list of concept source Ids for preferred sources, in case an incoming concept
+has duplicate mappings to any of these sources, no confirmation will be required unless its
 datatype or concept class differs from that of the existing concept','124529c1-d575-4319-b6b6-3054e069e618',null,null,null,null),
     ('metadatasharing.started','true',null,'671fde27-fbb1-4f26-aea8-9017b90d3df3',null,null,null,null),
     ('metadatasharing.systemConceptSource','3f65b686-26fe-102b-80cb-0017a47871b2','A system concept source that will be used to mark all
@@ -64099,11 +64099,11 @@ Defaults: height (5090), weight (5089), cd4 (5497).','393dc2d2-6aa3-11df-808b-00
     ('patientsummary.adultconceptIdsToWatch','12,5497','Comma delimited list of concept ids to trigger alerts for adults.
 Alerts trigger when concepts are empty or have not been updated in six months.
 Defaults: x-ray chest (12), cd4 (5497).','393dc868-6aa3-11df-808b-0015175d9adf',null,null,null,null),
-    ('patientsummary.adverseEffectConceptId','1297','Adverse effect concept id. 
+    ('patientsummary.adverseEffectConceptId','1297','Adverse effect concept id.
  Default: 1297.','393dccdc-6aa3-11df-808b-0015175d9adf',null,null,null,null),
-    ('patientsummary.arvDrugsConceptId','1085','ARV Drugs concept id. 
+    ('patientsummary.arvDrugsConceptId','1085','ARV Drugs concept id.
  Default: 1085.','393dcf98-6aa3-11df-808b-0015175d9adf',null,null,null,null),
-    ('patientsummary.childconceptIdsToGraph','5090,5089,5497','Ordered, comma separated list of child concept ids to graph in patient summary. 
+    ('patientsummary.childconceptIdsToGraph','5090,5089,5497','Ordered, comma separated list of child concept ids to graph in patient summary.
 Defaults: height (5090), weight (5089), cd4 (5497).','393dd5ba-6aa3-11df-808b-0015175d9adf',null,null,null,null),
     ('patientsummary.childconceptIdsToWatch','12,730,5497,5089,5000','Comma delimited list of concept ids to trigger alerts for children.
 Alerts trigger when concepts are empty or have not been updated in one month.
@@ -64161,7 +64161,7 @@ on the patient page. This should be a comma-separated list of patient identifier
     ('registration.parentChildRelationshipTypeId','8','The integer value of the parent to child relationship type id.','ad5dbd02-f514-4fcb-a6b5-67e322e15dc4',null,null,null,null),
     ('registration.primaryIdentifierType','IMB Primary Care Registration ID','Must be the ID of a Patient Identifier Type. Newly created patients will
 have an identifier of this type added to them.','ad252a3e-cc88-4530-9874-77903e9809a6',null,null,null,null),
-    ('registration.restrictSearchByHealthCenter','false','When searching for a patient by name, restrict the results to only patients for whom their 
+    ('registration.restrictSearchByHealthCenter','false','When searching for a patient by name, restrict the results to only patients for whom their
 health center is the location of the person using the touch-screen system.','0309ecdb-9fa2-4d9c-8655-9585d7a56514',null,null,null,null),
     ('registration.serviceRequestedConcept','6702','The conceptId for the services that a patient can come to the registration desk for.','0c07375e-1a96-4fe6-9e35-191c07f01d36',null,null,null,null),
     ('registration.showDiagnosisLink','false','If set to true buttons directing to the Diagnosis Capture module will be displayed','9ac8f37a-8658-4fbb-9033-e9b4b108b559',null,null,null,null),
@@ -64693,7 +64693,7 @@ DRUG_TDF_FTC_NVP = 898d8570-60ff-4f4c-aef3-547d6aa0d809
 DRUG_TNF_3TC = 06793d30-bf06-469f-8ae9-c9c06a8c444b
 DRUG_UNAVAILABLE = 3cdd79d0-26fe-102b-80cb-0017a47871b2
 DRUG_WITHDRAWN = 3cdc79b8-26fe-102b-80cb-0017a47871b2
-DRUG_COTRIMOXAZOLE = 3cd51772-26fe-102b-80cb-0017a47871b2 
+DRUG_COTRIMOXAZOLE = 3cd51772-26fe-102b-80cb-0017a47871b2
 DRUG_FLUCONAZOLE = 3cd3ec30-26fe-102b-80cb-0017a47871b2
 DRUG_DAPSONE = 3cccd95e-26fe-102b-80cb-0017a47871b2
 Duration_of_hospitalization = bd7a77ed-32ed-43cd-9719-e3ab09f22457
@@ -64787,7 +64787,7 @@ TB_DRUG_RH = 3cd7d548-26fe-102b-80cb-0017a47871b2
 TB_DRUG_RHZ = 3cd40cec-26fe-102b-80cb-0017a47871b2
 TB_DRUG_RHE = 3cdc503c-26fe-102b-80cb-0017a47871b2
 TB_DRUG_AMOX_CLAV = 3cd11a3c-26fe-102b-80cb-0017a47871b2
-TB_TREATMENT_OUTCOME_GUERI_CURED = 3cdd7408-26fe-102b-80cb-0017a47871b2  
+TB_TREATMENT_OUTCOME_GUERI_CURED = 3cdd7408-26fe-102b-80cb-0017a47871b2
 TB_TREATMENT_OUTCOME_ECHEC_FAILED = 3cd49432-26fe-102b-80cb-0017a47871b2
 TB_TREATMENT_OUTCOME_COMPLETE = 3cdcecea-26fe-102b-80cb-0017a47871b2
 TB_TREATMENT_OUTCOME_ABAONDONED = 3cdd5176-26fe-102b-80cb-0017a47871b2
@@ -64870,7 +64870,7 @@ see the ConceptDictionary class of this module.','2ea4698e-76bd-11e1-8c3a-001517
     ('simplelabentry.labTestEncounterType','9','This should be the EncounterTypeId of the EncounterType that represents a Lab Test Encounter','a55e1909-9284-4b51-9178-067ec9274ed4',null,null,null,null),
     ('simplelabentry.mandatory','false',null,'2f3c785e-b765-440a-bf15-fd1fba97a6fa',null,null,null,null),
     ('simplelabentry.patientHealthCenterAttributeType','7','The PersonAttributeTypeId for the PersonAttributeType representing the Patient\'s Health Center','5d2ddeb8-a445-410c-8028-5afc271654c9',null,null,null,null),
-    ('simplelabentry.patientIdentifierType','5','This should be the PatientIdentifierTypeId for the PatientIdentifierType 
+    ('simplelabentry.patientIdentifierType','5','This should be the PatientIdentifierTypeId for the PatientIdentifierType
 that will be used for listing, searching, and creating patients','3bcacbea-477f-413c-a37d-0399b2cc0fbd',null,null,null,null),
     ('simplelabentry.patientIdentifierTypesToSearch','3,4,7,8','Other patient identifier types to include when searching for a patient by ID.  Comma delimited set of patient identifier type IDs.','ea9f8947-b1ca-4d14-909d-993c0ef6896b',null,null,null,null),
     ('simplelabentry.programToDisplay','3','In Patient Lists, we will display the Current State for the PatientProgram for the Program configured by this property.
@@ -65032,7 +65032,7 @@ select 'Inserting data into hl7_source...';
 LOCK TABLES `hl7_source` WRITE;
 /*!40000 ALTER TABLE `hl7_source` DISABLE KEYS */;
 
-INSERT INTO hl7_source VALUES 
+INSERT INTO hl7_source VALUES
     (1,'local','OpenMRS local HL7 source',1,'2006-02-27 13:07:00.0','8d6b8bb6-c2cc-11de-8d13-0010c6dffd0f'),
     (2,'neal_lims','The Neal Lesh lab register and data tool',24839,'2007-05-18 22:41:06.0','a2ce67e0-26fe-102b-80cb-0017a47871b2');
 
@@ -65082,7 +65082,7 @@ select 'Inserting data into htmlformentry_html_form...';
 LOCK TABLES `htmlformentry_html_form` WRITE;
 /*!40000 ALTER TABLE `htmlformentry_html_form` DISABLE KEYS */;
 
-INSERT INTO htmlformentry_html_form VALUES 
+INSERT INTO htmlformentry_html_form VALUES
     (1,73,null,'<htmlform>Removed for testing</htmlform>',6,'2009-02-17 01:35:44.0',1,'2010-12-13 16:01:27.0',false,'a7b6113a-6b23-11df-808b-0015175d9adf',null,6,null,null),
     (2,83,null,'<htmlform>Removed for testing</htmlform>',7,'2010-05-30 21:10:48.0',12,'2012-09-26 22:01:10.0',false,'fdeb7ff7-aa83-4386-9196-98b8424a5b20',null,7,null,null),
     (3,84,null,'<htmlform>Removed for testing</htmlform>',7,'2010-08-18 23:25:53.0',6,'2012-09-26 22:02:48.0',false,'f065a9c3-4de4-49dc-a049-6a30a66df579',null,12,null,null),
@@ -65313,7 +65313,7 @@ select 'Inserting data into idgen_identifier_source...';
 LOCK TABLES `idgen_identifier_source` WRITE;
 /*!40000 ALTER TABLE `idgen_identifier_source` DISABLE KEYS */;
 
-INSERT INTO idgen_identifier_source VALUES 
+INSERT INTO idgen_identifier_source VALUES
     (1,'08656d01-b429-43fb-957a-a1539e9128db','IMB Primary Care Registration ID','IMB Primary Care Registration ID',8,24839,'2010-10-03 19:56:34.0',12,'2013-10-04 11:53:24.0',false,7,null,null);
 
 
@@ -65455,7 +65455,7 @@ select 'Inserting data into idgen_seq_id_gen...';
 LOCK TABLES `idgen_seq_id_gen` WRITE;
 /*!40000 ALTER TABLE `idgen_seq_id_gen` DISABLE KEYS */;
 
-INSERT INTO idgen_seq_id_gen VALUES 
+INSERT INTO idgen_seq_id_gen VALUES
     (1,48272,'0123456789ACEFHJKMNPUWXY','00001','','',10);
 
 
@@ -65492,7 +65492,7 @@ select 'Inserting data into liquibasechangelog...';
 LOCK TABLES `liquibasechangelog` WRITE;
 /*!40000 ALTER TABLE `liquibasechangelog` DISABLE KEYS */;
 
-INSERT INTO liquibasechangelog VALUES 
+INSERT INTO liquibasechangelog VALUES
     ('0','bwolfe','liquibase-update-to-latest.xml','2010-05-28 22:06:31.0','3:ccc4741ff492cb385f44e714053920af','Custom Change','Run the old sqldiff file to get database up to the 1.4.0.20 version if needed. (Requires \'mysql\' to be on the PATH)',null,'1.9.4',-1,'EXECUTED'),
     ('02232009-1141','nribeka','liquibase-update-to-latest.xml','2010-05-28 23:15:09.0','3:b5921fb42deb90fe52e042838d0638a0','Modify Column','Modify the password column to fit the output of SHA-512 function',null,'1.9.4',-1,'EXECUTED'),
     ('1','upul','liquibase-update-to-latest.xml','2010-05-28 22:06:32.0','3:7fbc03c45bb69cd497b096629d32c3f5','Add Column','Add the column to person_attribute type to connect each type to a privilege',null,'1.9.4',-1,'EXECUTED'),
@@ -65504,7 +65504,7 @@ INSERT INTO liquibasechangelog VALUES
     ('200805281225','bmckown','liquibase-update-to-latest.xml','2010-05-28 22:41:46.0','3:5281031bcc075df3b959e94da4adcaa9','Insert Row','Adding a \'complex\' Concept Datatype',null,'1.9.4',-1,'EXECUTED'),
     ('200805281226','bmckown','liquibase-update-to-latest.xml','2010-05-28 22:41:46.0','3:9a49a3d002485f3a77134d98fb7c8cd8','Drop Table (x2)','Dropping the mimetype and complex_obs tables as they aren\'t needed in the new complex obs setup',null,'1.9.4',-1,'EXECUTED'),
     ('200809191226','smbugua','liquibase-update-to-latest.xml','2010-05-28 22:41:47.0','3:eed0aa27b44ecf668c81e457d99fa7de','Add Column','Adding the hl7 archive message_state column so that archives can be tracked
-			
+
 			(preCondition database_version check in place because this change was in the old format in trunk for a while)',null,'1.9.4',-1,'EXECUTED'),
     ('200809191927','smbugua','liquibase-update-to-latest.xml','2010-05-28 22:41:47.0','3:f0e4fab64749e42770e62e9330c2d288','Rename Column, Modify Column','Adding the hl7 archive message_state column so that archives can be tracked',null,'1.9.4',-1,'EXECUTED'),
     ('200811261102','bwolfe','liquibase-update-to-latest.xml','2010-05-28 22:06:32.0','3:158dd028359ebfd4f1c9bf2e76a5e143','Update Data','Fix field property for new Tribe person attribute',null,'1.9.4',-1,'EXECUTED'),
@@ -66020,7 +66020,7 @@ select 'Inserting data into liquibasechangeloglock...';
 LOCK TABLES `liquibasechangeloglock` WRITE;
 /*!40000 ALTER TABLE `liquibasechangeloglock` DISABLE KEYS */;
 
-INSERT INTO liquibasechangeloglock VALUES 
+INSERT INTO liquibasechangeloglock VALUES
     (1,false,null,null);
 
 
@@ -66079,7 +66079,7 @@ select 'Inserting data into location...';
 LOCK TABLES `location` WRITE;
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
 
-INSERT INTO location VALUES 
+INSERT INTO location VALUES
     (1,'Battery Park Health Center','A de-identified health center located at Battery Park','Battery Park',null,'New York','NY',null,'USA',null,null,6,'2005-09-22 00:00:00.0','New York','Lower Manhattan',null,null,null,'8d6c993e-c2cc-11de-8d13-0010c6dffd0f',false,6,null,null,null),
     (25,'Chelsea Health Center','A de-identified health center located at Chelsea','Chelsea',null,'New York','NY',null,'USA',null,null,6,'2006-09-27 21:24:40.0','New York','Midtown',null,null,null,'a2e181c2-26fe-102b-80cb-0017a47871b2',false,7,null,null,null),
     (26,'Radcliffe Health Center','A de-identified health center located at Radcliffe','Radcliffe',null,'Cambridge','MA',null,'USA',null,null,6,'2006-09-27 21:24:40.0','Middlesex','Riverside',null,null,null,'a2e183d4-26fe-102b-80cb-0017a47871b2',false,6,null,null,null),
@@ -66422,7 +66422,7 @@ select 'Inserting data into logic_token_registration...';
 LOCK TABLES `logic_token_registration` WRITE;
 /*!40000 ALTER TABLE `logic_token_registration` DISABLE KEYS */;
 
-INSERT INTO logic_token_registration VALUES 
+INSERT INTO logic_token_registration VALUES
     (1,1,'2011-08-05 17:17:51.0',1,null,'encounterLocation','org.openmrs.logic.datasource.EncounterDataSource','encounterLocation','encounterLocation','f86b14af-ca4e-4a2c-b1a9-946c5aaa8505'),
     (2,1,'2011-08-05 17:17:51.0',5,null,'encounterProvider','org.openmrs.logic.datasource.EncounterDataSource','encounterProvider','encounterProvider','5d497b8e-2acd-4aa1-949b-f2d605bb255d'),
     (3,1,'2011-08-05 17:17:51.0',7,null,'encounter','org.openmrs.logic.datasource.EncounterDataSource','encounter','encounter','5168ee36-ea77-4f7a-a03a-03dc896f4cc3'),
@@ -67810,7 +67810,7 @@ select 'Inserting data into order_type...';
 LOCK TABLES `order_type` WRITE;
 /*!40000 ALTER TABLE `order_type` DISABLE KEYS */;
 
-INSERT INTO order_type VALUES 
+INSERT INTO order_type VALUES
     (1,'Drug Order','Drug information captured from patient historically',12,'2005-08-08 07:06:12.0','bcf7f8c8-2700-102b-80cb-0017a47871b2',false,6,null,null),
     (2,'Zidolam-N','New drug order',7,'2005-08-08 07:07:20.0','bcf7fb8e-2700-102b-80cb-0017a47871b2',false,24839,null,null),
     (3,'Test','New test order',7,'2005-08-08 07:07:53.0','bcf7fd8c-2700-102b-80cb-0017a47871b2',false,1,null,null),
@@ -67942,7 +67942,7 @@ select 'Inserting data into orderextension_order_set...';
 LOCK TABLES `orderextension_order_set` WRITE;
 /*!40000 ALTER TABLE `orderextension_order_set` DISABLE KEYS */;
 
-INSERT INTO orderextension_order_set VALUES 
+INSERT INTO orderextension_order_set VALUES
     (1,'55c832a2-30a2-4763-a033-111386071f1f','ABC + 3TC + Kaletra','ABC + 3TC + Kaletra','ANY',7102,0,null,7,'2012-09-27 20:43:40.0',12,null,0,7,null,null),
     (2,'dbf4ba36-76cd-495d-86c5-ea9040b721f3','AZT + 3TC + EFV','AZT + 3TC + EFV','ANY',7102,0,null,6,'2012-09-27 20:52:33.0',1,null,0,6,null,null),
     (3,'67fbf3f4-27a9-4ffe-97f8-4b7aab5c643f','AZT + 3TC + Kaletra','AZT + 3TC + Kaletra','ANY',7102,0,null,24839,'2012-09-27 20:55:55.0',12,null,0,24839,null,null),
@@ -68031,7 +68031,7 @@ select 'Inserting data into orderextension_order_set_member...';
 LOCK TABLES `orderextension_order_set_member` WRITE;
 /*!40000 ALTER TABLE `orderextension_order_set_member` DISABLE KEYS */;
 
-INSERT INTO orderextension_order_set_member VALUES 
+INSERT INTO orderextension_order_set_member VALUES
     (1,'bd727cdf-5440-4445-9dc8-0c8f04eac853',1,0,null,null,0,null,null,null,'org.openmrs.module.orderextension.DrugOrderSetMember',814,null,null,40,1.0,'tablet',3327,null,'2/day Take every day',false,null),
     (2,'455795af-4468-41f7-a22e-ee35baf4d6e2',1,1,null,null,0,null,null,null,'org.openmrs.module.orderextension.DrugOrderSetMember',628,null,null,42,1.0,'capsule',3327,null,'2/day Take every day',false,null),
     (3,'e04f3bed-d470-49a0-8407-b7a33f34ff06',1,2,null,null,0,null,null,null,'org.openmrs.module.orderextension.DrugOrderSetMember',794,null,null,196,2.0,'tablet',3327,null,'2/day Take every day',false,null),
@@ -68482,7 +68482,7 @@ select 'Inserting data into patient_identifier_type...';
 LOCK TABLES `patient_identifier_type` WRITE;
 /*!40000 ALTER TABLE `patient_identifier_type` DISABLE KEYS */;
 
-INSERT INTO patient_identifier_type VALUES 
+INSERT INTO patient_identifier_type VALUES
     (1,'HIVEMR-V1','Internal patient_id from PIH\'s original Rwanda EMR','',false,1,'2005-09-22 00:00:00.0',false,null,'c147a9b4-2700-102b-80cb-0017a47871b2',null,false,12,null,null,null),
     (2,'Social Security Number','Number given out in the United States to track social security benefits and often used as a unique identifier..',null,false,1,'2005-09-22 00:00:00.0',false,null,'c147ac70-2700-102b-80cb-0017a47871b2',null,false,5,null,null,null),
     (3,'Carte d\'Identité','Rwandan national identity card','',false,6,'2006-09-07 10:28:05.0',false,null,'c147ae5a-2700-102b-80cb-0017a47871b2',null,false,5,null,null,null),
@@ -68644,7 +68644,7 @@ select 'Inserting data into person...';
 LOCK TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
 
-INSERT INTO person VALUES 
+INSERT INTO person VALUES
     (1,'F',null,false,false,null,null,1,'2005-01-01 00:00:00.0',7,'2012-06-09 14:37:52.0',false,12,null,null,'c5fcd3d0-2700-102b-80cb-0017a47871b2'),
     (5,'M',null,false,false,null,null,1,'2006-03-14 18:28:40.0',7,'2010-06-03 15:16:56.0',false,7,null,null,'c5fcdd26-2700-102b-80cb-0017a47871b2'),
     (6,'M',null,false,false,null,null,1,'2006-04-05 16:15:22.0',5,'2008-03-07 18:51:58.0',false,5,null,'','c5fcdf06-2700-102b-80cb-0017a47871b2'),
@@ -68713,7 +68713,7 @@ select 'Inserting data into person_address...';
 LOCK TABLES `person_address` WRITE;
 /*!40000 ALTER TABLE `person_address` DISABLE KEYS */;
 
-INSERT INTO person_address VALUES 
+INSERT INTO person_address VALUES
     (2390,5,true,null,null,null,null,null,'USA',null,null,6,'2007-05-08 20:12:26.0',false,24839,null,null,null,null,null,null,null,'c7df4f48-2700-102b-80cb-0017a47871b2',null,5,null,null),
     (5617,6,true,null,null,null,null,null,'USA',null,null,7,'2007-12-12 23:40:00.0',false,1,null,null,null,null,null,null,null,'c81342b2-2700-102b-80cb-0017a47871b2',null,24839,null,null),
     (6431,7,true,null,null,null,null,null,'USA',null,null,7,'2008-04-03 21:10:10.0',false,24839,null,null,null,null,null,null,null,'6452036c-07b6-4688-87bd-8a9f24e9cdbf',null,7,null,null),
@@ -68767,7 +68767,7 @@ select 'Inserting data into person_attribute...';
 LOCK TABLES `person_attribute` WRITE;
 /*!40000 ALTER TABLE `person_attribute` DISABLE KEYS */;
 
-INSERT INTO person_attribute VALUES 
+INSERT INTO person_attribute VALUES
     (16579,5,'',2,6,'2007-05-08 20:12:26.0',24839,'2010-06-03 15:16:56.0',true,6,'2007-05-08 20:12:26.0','Empty values not allowed','cb4177ce-2700-102b-80cb-0017a47871b2'),
     (16580,5,'',3,6,'2007-05-08 20:12:26.0',6,'2010-06-03 15:16:56.0',true,6,'2007-05-08 20:12:26.0','Empty values not allowed','cb4178fa-2700-102b-80cb-0017a47871b2'),
     (16581,5,'',5,6,'2007-05-08 20:12:26.0',1,'2010-06-03 15:16:56.0',true,6,'2007-05-08 20:12:26.0','Empty values not allowed','cb417a26-2700-102b-80cb-0017a47871b2'),
@@ -68859,7 +68859,7 @@ select 'Inserting data into person_attribute_type...';
 LOCK TABLES `person_attribute_type` WRITE;
 /*!40000 ALTER TABLE `person_attribute_type` DISABLE KEYS */;
 
-INSERT INTO person_attribute_type VALUES 
+INSERT INTO person_attribute_type VALUES
     (1,'Race','Group of persons related by common descent or heredity','java.lang.String',null,false,1,'2007-05-03 09:20:37.0',7,null,'8d871386-c2cc-11de-8d13-0010c6dffd0f',false,7,null,null,null,7.0),
     (2,'Birthplace','Location of persons birth','java.lang.String',null,false,1,'2007-05-03 09:20:37.0',7,null,'8d8718c2-c2cc-11de-8d13-0010c6dffd0f',false,5,null,null,null,0.0),
     (3,'Citizenship','Country of which this person is a member','java.lang.String',null,false,1,'2007-05-03 09:20:37.0',24839,null,'8d871afc-c2cc-11de-8d13-0010c6dffd0f',false,1,null,null,null,2.0),
@@ -68959,7 +68959,7 @@ select 'Inserting data into person_name...';
 LOCK TABLES `person_name` WRITE;
 /*!40000 ALTER TABLE `person_name` DISABLE KEYS */;
 
-INSERT INTO person_name VALUES 
+INSERT INTO person_name VALUES
     (15696,true,1,null,'Marcia',null,null,'Pierce',null,null,null,1,'2005-01-01 00:00:00.0',false,6,null,null,24839,'2012-06-09 14:37:52.0','ceb4e40e-2700-102b-80cb-0017a47871b2'),
     (15700,true,5,null,'Nicholas','',null,'Webb',null,null,null,1,'2006-03-14 18:28:40.0',false,24839,null,null,7,'2010-06-03 15:16:56.0','ceb4e986-2700-102b-80cb-0017a47871b2'),
     (15701,true,6,null,'Peter','Philip',null,'Powell',null,null,null,1,'2006-04-05 16:15:22.0',false,5,null,null,6,'2006-10-10 12:36:19.0','ceb4eada-2700-102b-80cb-0017a47871b2'),
@@ -68995,7 +68995,7 @@ select 'Inserting data into privilege...';
 LOCK TABLES `privilege` WRITE;
 /*!40000 ALTER TABLE `privilege` DISABLE KEYS */;
 
-INSERT INTO privilege VALUES 
+INSERT INTO privilege VALUES
     ('Add Allergies','Add allergies','ff1162ab-67a5-4394-ba56-398173367c0d'),
     ('Add Cohorts','Able to add a cohort to the system','3ebb27af-5a27-4fc0-83d8-663621c9bf8e'),
     ('Add Concept Proposals','Able to add concept proposals to the system','7d9100fe-3f69-469b-ab9c-b8f7fe5a2b28'),
@@ -69300,7 +69300,7 @@ select 'Inserting data into program...';
 LOCK TABLES `program` WRITE;
 /*!40000 ALTER TABLE `program` DISABLE KEYS */;
 
-INSERT INTO program VALUES 
+INSERT INTO program VALUES
     (3,1482,6,'2006-09-27 20:34:45.0',24839,'2012-06-07 15:14:19.0',false,'cf7c0e30-2700-102b-80cb-0017a47871b2','Adult HIV PROGRAM','PIH Adult HIV program',null),
     (4,1648,6,'2006-09-27 20:35:03.0',7,'2007-05-03 10:05:43.0',false,'cf7c10a6-2700-102b-80cb-0017a47871b2','TUBERCULOSIS PROGRAM',null,null),
     (5,1845,6,'2007-03-12 21:45:55.0',1,'2007-03-12 21:48:00.0',false,'cf7c124a-2700-102b-80cb-0017a47871b2','NUTRITION PROGRAM',null,null),
@@ -69358,7 +69358,7 @@ select 'Inserting data into program_workflow...';
 LOCK TABLES `program_workflow` WRITE;
 /*!40000 ALTER TABLE `program_workflow` DISABLE KEYS */;
 
-INSERT INTO program_workflow VALUES 
+INSERT INTO program_workflow VALUES
     (3,3,1484,6,'2006-09-27 20:34:45.0',false,12,'2012-06-07 15:14:19.0','cf8f2664-2700-102b-80cb-0017a47871b2'),
     (4,4,1484,6,'2006-09-27 20:35:03.0',false,7,null,'cf8f2934-2700-102b-80cb-0017a47871b2'),
     (5,5,1846,24839,'2007-03-12 21:48:00.0',false,6,null,'cf8f2ad8-2700-102b-80cb-0017a47871b2'),
@@ -69438,7 +69438,7 @@ select 'Inserting data into program_workflow_state...';
 LOCK TABLES `program_workflow_state` WRITE;
 /*!40000 ALTER TABLE `program_workflow_state` DISABLE KEYS */;
 
-INSERT INTO program_workflow_state VALUES 
+INSERT INTO program_workflow_state VALUES
     (5,3,1490,true,false,6,'2006-09-27 21:20:39.0',false,6,'2012-06-07 15:14:19.0','cfa241f4-2700-102b-80cb-0017a47871b2'),
     (6,3,1710,true,false,6,'2006-09-27 21:20:39.0',false,7,'2012-06-07 15:14:19.0','cfa244b0-2700-102b-80cb-0017a47871b2'),
     (7,3,1708,true,false,6,'2006-09-27 21:20:39.0',false,12,'2012-06-07 15:14:19.0','cfa24690-2700-102b-80cb-0017a47871b2'),
@@ -69894,7 +69894,7 @@ select 'Inserting data into provider...';
 LOCK TABLES `provider` WRITE;
 /*!40000 ALTER TABLE `provider` DISABLE KEYS */;
 
-INSERT INTO provider VALUES 
+INSERT INTO provider VALUES
     (1,24694,null,'1',1,'2012-06-08 13:50:58.0',12,null,false,5,null,null,'b4ee9fa6-b23a-11e1-87a0-9c8e9908ba72'),
     (2,1,null,'2',1,'2012-06-08 13:51:00.0',1,null,false,24839,null,null,'b4eea4c4-b23a-11e1-87a0-9c8e9908ba72'),
     (3,5,null,'3',1,'2012-06-08 13:51:00.0',6,null,false,6,null,null,'b4eea5a0-b23a-11e1-87a0-9c8e9908ba72'),
@@ -70088,7 +70088,7 @@ select 'Inserting data into relationship_type...';
 LOCK TABLES `relationship_type` WRITE;
 /*!40000 ALTER TABLE `relationship_type` DISABLE KEYS */;
 
-INSERT INTO relationship_type VALUES 
+INSERT INTO relationship_type VALUES
     (1,'Accompagnateur','Patient',0,1,'Community health worker who supervises treatment',7,'2009-03-17 21:41:34.0','d283d13a-2700-102b-80cb-0017a47871b2',false,5,null,null),
     (4,'Accompagnateur Leader','Supervised Accompagnateur',0,5,'Leader that an accompagnateur reports to',24839,'2009-05-11 13:07:07.0','d283d39c-2700-102b-80cb-0017a47871b2',false,12,null,null),
     (6,'Doctor','Patient',0,7,'Relationship from a primary care provider to the patient',7,'2009-03-17 21:41:34.0','d283d536-2700-102b-80cb-0017a47871b2',false,12,null,null),
@@ -70315,7 +70315,7 @@ select 'Inserting data into role...';
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
 
-INSERT INTO role VALUES 
+INSERT INTO role VALUES
     ('Accompagnateur','Community health worker','d2fcb33e-2700-102b-80cb-0017a47871b2'),
     ('Accompagnateur Leader','Responsible for overseeing up to 30 Accompagnateurs','d2fcb604-2700-102b-80cb-0017a47871b2'),
     ('AdditionsFor1_9','Hack because permissions and roles don\'t seem to work in 1_9','d4299028-f419-4537-a5f6-0b12c532ac41'),
@@ -70369,7 +70369,7 @@ select 'Inserting data into role_privilege...';
 LOCK TABLES `role_privilege` WRITE;
 /*!40000 ALTER TABLE `role_privilege` DISABLE KEYS */;
 
-INSERT INTO role_privilege VALUES 
+INSERT INTO role_privilege VALUES
     ('Accompagnateur Leader','View Encounters'),
     ('Accompagnateur Leader','View Forms'),
     ('Accompagnateur Leader','View Observations'),
@@ -70932,7 +70932,7 @@ select 'Inserting data into role_role...';
 LOCK TABLES `role_role` WRITE;
 /*!40000 ALTER TABLE `role_role` DISABLE KEYS */;
 
-INSERT INTO role_role VALUES 
+INSERT INTO role_role VALUES
     ('Provider','Accompagnateur'),
     ('Accompagnateur','Accompagnateur Leader'),
     ('Run Reports','AdditionsFor1_9'),
@@ -70986,7 +70986,7 @@ select 'Inserting data into scheduler_task_config...';
 LOCK TABLES `scheduler_task_config` WRITE;
 /*!40000 ALTER TABLE `scheduler_task_config` DISABLE KEYS */;
 
-INSERT INTO scheduler_task_config VALUES 
+INSERT INTO scheduler_task_config VALUES
     (2,'Process HL7 Task','Processes HL7 messages.','org.openmrs.scheduler.tasks.ProcessHL7InQueueTask','2006-04-24 00:00:00.0','MM/dd/yyyy HH:mm:ss',30,1,1,1,'2006-04-24 00:00:00.0',24839,'2013-10-17 14:47:30.0','a9b0d72e-6abd-11df-808b-0015175d9adf','2013-10-17 14:47:30.0'),
     (4,'Send Email Task','Doesn\'t do anything yet.','org.openmrs.scheduler.tasks.SendEmailTask','2006-04-24 00:00:00.0',null,600,0,0,1,'2006-04-24 00:00:00.0',24839,'2007-02-24 18:36:49.0','a9b0da44-6abd-11df-808b-0015175d9adf',null),
     (31,'Update Concept Words','Iterates through the concept dictionary, re-creating concept words (which are used for searcing). This task is started when using the "Update Concept Word Storage" page and no range is given.','org.openmrs.scheduler.tasks.ConceptWordUpdateTask',null,null,0,0,0,6,'2008-11-20 05:30:06.0',7,'2008-11-20 07:37:00.0','a9b0deae-6abd-11df-808b-0015175d9adf',null),
@@ -71027,7 +71027,7 @@ select 'Inserting data into scheduler_task_config_property...';
 LOCK TABLES `scheduler_task_config_property` WRITE;
 /*!40000 ALTER TABLE `scheduler_task_config_property` DISABLE KEYS */;
 
-INSERT INTO scheduler_task_config_property VALUES 
+INSERT INTO scheduler_task_config_property VALUES
     (1155,'delete_entries_files_older_than_x_days','90',122),
     (1156,'sync_record_states_to_delete','',122);
 
@@ -71092,7 +71092,7 @@ select 'Inserting data into sync_class...';
 LOCK TABLES `sync_class` WRITE;
 /*!40000 ALTER TABLE `sync_class` DISABLE KEYS */;
 
-INSERT INTO sync_class VALUES 
+INSERT INTO sync_class VALUES
     (1,'org.openmrs.notification.Alert',false,false),
     (2,'org.openmrs.module.logic',false,false),
     (3,'org.openmrs.GlobalProperty',false,false),
@@ -71285,7 +71285,7 @@ select 'Inserting data into user_role...';
 LOCK TABLES `user_role` WRITE;
 /*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
 
-INSERT INTO user_role VALUES 
+INSERT INTO user_role VALUES
     (1,'System Developer'),
     (5,'Clinician'),
     (5,'Data Manager'),
@@ -71349,7 +71349,7 @@ select 'Inserting data into users...';
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 
-INSERT INTO users VALUES 
+INSERT INTO users VALUES
     (1,'1-8','admin','13416bd4ae109e6d789646b991f2134a8173565581d88d736a16b9adb1266004f528e906317f781fc945f77020538a4497e27556f252ad550ba5ad6f70c08283','10fefe16c61ba76134740eeab74aa921bf9c16c0b16ece0712ec18b3590570a6e6a1d7040afedcd853512c5bd54194958eeb86c688727da3a5511689153313ec',null,null,1,'2005-01-01 00:00:00.0',6,'2012-06-09 14:37:52.0','d5415c4e-2700-102b-80cb-0017a47871b2',1,false,6,null,null),
     (5,'5','user5','a1de6ee3dfc7dcf1c2d366389a0a0991aca5a701d9f7b3a07715617bd5a5d9440ee58105e82d2cdbcd1237ee65b00b5bb118240db675609f920e4dffa9a19b0e','af723de5d42f68f0b9c4d3bb74562c0fb4d3f1',null,null,1,'2006-03-14 18:28:40.0',6,'2010-06-03 15:16:56.0','d5416586-2700-102b-80cb-0017a47871b2',5,true,6,'2011-11-09 12:56:10.0','no permanent access to records'),
     (6,'6','user6','1a39ef2571336387ccc6270a9b41f66682c2712397bf608be25e183d9435745bb5239d9f037bd77fcef53a96d77f2c3d244c44ea1f7a55c3260bf8f12b5a8a86','134f33b6c4c2f7476fc0466cb3798257c4b13e17',null,null,1,'2006-04-05 16:15:22.0',1,'2012-08-24 10:53:45.0','d5416766-2700-102b-80cb-0017a47871b2',6,true,7,'2012-08-24 10:53:45.0','Not involved in Rwanda'),
@@ -71548,7 +71548,7 @@ select 'Inserting data into visit_type...';
 LOCK TABLES `visit_type` WRITE;
 /*!40000 ALTER TABLE `visit_type` DISABLE KEYS */;
 
-INSERT INTO visit_type VALUES 
+INSERT INTO visit_type VALUES
     (1,'Primary Care Outpatient','Represents a single day primary care visit to a health center.','3515b588-b1df-4110-991b-0d603686d8e6',1,'2012-10-01 07:30:21.0',7,'2012-11-08 15:31:20.0',0,7,null,null);
 
 
@@ -71563,7 +71563,7 @@ select 'Inserting data into address_hierarchy...';
 LOCK TABLES `address_hierarchy` WRITE;
 /*!40000 ALTER TABLE `address_hierarchy` DISABLE KEYS */;
 
-INSERT INTO address_hierarchy VALUES 
+INSERT INTO address_hierarchy VALUES
     (1,'USA',1,null,'1',null,null,null),
     (2,'FL',2,1,'2',null,null,null),
     (3,'Palm Beach',3,2,'3',null,null,null),
@@ -71681,7 +71681,7 @@ select 'Inserting data into global_property...';
 LOCK TABLES `global_property` WRITE;
 /*!40000 ALTER TABLE `global_property` DISABLE KEYS */;
 
-INSERT INTO global_property VALUES 
+INSERT INTO global_property VALUES
     ('reports.currentlocation','Bedford Mews Health Center 1','The current location to be used by the reports','a65fe017-72be-473a-bfce-5a904d4d6483',null,null,null,null),
     ('registration.rwandaLocationCodes','Bedford Mews Health Center 1:101|Newtown Health Center:102|Battery Park Health Center:103|Bedford Mews Health Center:104|Radcliffe Health Center:105|Dunster Health Center:106|Fairway Health Center:107|Huron Health Center:108|Mather Health Center:109|Highland Health Center:110|Chelsea Health Center 1:111|Radcliffe Health Center 2:112|Radcliffe Health Center 1:113|Leverett Health Center:114|Polo Health Center:115|State House Health Center:116|Galloping Hill Health Center:117|71st Avenue Health Center:118|Brighton Health Center 1:119|Adams Health Center:120|Pondside Health Center:121|Dudley Health Center:122|Fairgrounds Health Center:123|Leverett Health Center 3:124|Leverett Health Center 2:125|Leverett Health Center 1:126|Brighton Health Center:127|Senior House Health Center:128|Cabot Health Center:129|Washington Square Health Center:130|Battery Park Health Center 1:131|Pembrooke Health Center:132|State House Health Center 1:133|Chelsea Health Center:134|Kirkland Health Center:135','location_Name:MOH_ID pairs.  All pairs are pipe delimited.  NO VALUE THAT YOU ENTER HERE SHOULD BE DUPLICATED ACROSS MULTIPLE SERVERS.','aa08f210-7362-11e1-8c3a-0015175d9adf',null,null,null,null),
     ('dataqualitytools.sitesToList','Bedford Mews Health Center 1:Bedford Mews Health Center 1|Newtown Health Center:Newtown Health Center|Battery Park Health Center:Battery Park Health Center|Bedford Mews Health Center:Bedford Mews Health Center|Radcliffe Health Center:Radcliffe Health Center|Dunster Health Center:Dunster Health Center|Fairway Health Center:Fairway Health Center|Huron Health Center:Huron Health Center|Mather Health Center:Mather Health Center|Highland Health Center:Highland Health Center|Chelsea Health Center 1:Chelsea Health Center 1|Radcliffe Health Center 2:Radcliffe Health Center 2|Radcliffe Health Center 1:Radcliffe Health Center 1|Leverett Health Center:Leverett Health Center|Polo Health Center:Polo Health Center|State House Health Center:State House Health Center|Galloping Hill Health Center:Galloping Hill Health Center|71st Avenue Health Center:71st Avenue Health Center|Brighton Health Center 1:Brighton Health Center 1|Adams Health Center:Adams Health Center|Pondside Health Center:Pondside Health Center|Dudley Health Center:Dudley Health Center|Fairgrounds Health Center:Fairgrounds Health Center|Leverett Health Center 3:Leverett Health Center 3|Leverett Health Center 2:Leverett Health Center 2|Leverett Health Center 1:Leverett Health Center 1|Brighton Health Center:Brighton Health Center|Senior House Health Center:Senior House Health Center|Cabot Health Center:Cabot Health Center|Washington Square Health Center:Washington Square Health Center|Battery Park Health Center 1:Battery Park Health Center 1|Pembrooke Health Center:Pembrooke Health Center|State House Health Center 1:State House Health Center 1|Chelsea Health Center:Chelsea Health Center|Kirkland Health Center:Kirkland Health Center',null,'0d8dd8c4-ad13-438b-8252-f99e75835237',null,null,null,null),

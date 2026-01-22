@@ -9,6 +9,11 @@ import org.openmrs.module.reporting.evaluation.parameter.Parameter;
 import org.openmrs.module.reporting.report.ReportDesign;
 import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.rwandareports.util.GlobalPropertiesManagement;
+import org.openmrs.module.rwandareports.reporting.util.ReportingConstants;
+import org.openmrs.module.rwandareports.reporting.util.SqlQueryLoader;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SetupPathologyRequestReport implements SetupReport {
 	
@@ -47,142 +52,178 @@ public class SetupPathologyRequestReport implements SetupReport {
 		return null;
 	}
 	
+	/**
+	 * Sets up pathology request report Creates report definition and CSV design
+	 * 
+	 * @throws Exception if report setup fails
+	 */
 	public void setup() throws Exception {
+		log.info("Setting up Pathology Request Report...");
 		
-		setupProperties();
-		
-		ReportDefinition rd = createReportDefinition();
-		ReportDesign designCSV = Helper.createCsvReportDesign(rd, "Pathology Request Report.csv_");
-		Helper.saveReportDesign(designCSV);
+		try {
+			setupProperties();
+			
+			ReportDefinition rd = createReportDefinition();
+			ReportDesign designCSV = Helper.createCsvReportDesign(rd, ReportingConstants.DESIGN_PATHOLOGY_REQUEST_CSV);
+			Helper.saveReportDesign(designCSV);
+			log.info("Pathology Request Report created successfully");
+		}
+		catch (Exception e) {
+			log.error("Failed to setup Pathology Request Report", e);
+			throw e;
+		}
 	}
 	
+	/**
+	 * Deletes pathology request report definition and design
+	 */
 	public void delete() {
-		Helper.purgeReportDefinition("Pathology Request Report");
+		log.info("Deleting Pathology Request Report...");
+		Helper.purgeReportDefinition(ReportingConstants.REPORT_PATHOLOGY_REQUEST);
+		log.info("Pathology Request Report deleted successfully");
 	}
 	
+	/**
+	 * Creates Pathology Request Report definition
+	 * 
+	 * @return configured ReportDefinition
+	 */
 	private ReportDefinition createReportDefinition() {
+		log.debug("Creating Pathology Request Report definition...");
+		
 		ReportDefinition reportDefinition = new ReportDefinition();
-		reportDefinition.setName("Pathology Request Report");
+		reportDefinition.setName(ReportingConstants.REPORT_PATHOLOGY_REQUEST);
 		reportDefinition.setUuid("996cf192-ff54-11eb-a63a-080027ce9ca0");
-		Parameter location = new Parameter("location", "Location", Location.class);
+		
+		Parameter location = new Parameter(ReportingConstants.PARAM_LOCATION, "Location", Location.class);
 		location.setRequired(false);
 		reportDefinition.addParameter(location);
 		
 		createDataSetDefinition(reportDefinition);
-		
 		Helper.saveReportDefinition(reportDefinition);
 		
 		return reportDefinition;
-		
 	}
 	
+	/**
+	 * Creates dataset definition for Pathology Request Report Uses external SQL file with JOIN
+	 * optimization Validates parameters before use to prevent SQL injection
+	 * 
+	 * @param reportDefinition the report definition to add dataset to
+	 */
 	private void createDataSetDefinition(ReportDefinition reportDefinition) {
-		
+
+		// Define parameters
+		Parameter location = new Parameter(
+			ReportingConstants.PARAM_LOCATION,
+			"Location",
+			Location.class
+		);
+		location.setRequired(false);
+
+		// Validate configuration
+		validateConfiguration();
+
+		// Build parameters map for SQL placeholder replacement
+		Map<String, Object> params = new HashMap<>();
+		params.put(
+			ReportingConstants.PLACEHOLDER_TELEPHONE_NUMBER_CONCEPT_ID,
+			telephoneNumberConcept.getConceptId()
+		);
+		params.put(
+			ReportingConstants.PLACEHOLDER_SAMPLE_STATUS_CONCEPT_ID,
+			sampleStatusConcept.getConceptId()
+		);
+		params.put(
+			ReportingConstants.PLACEHOLDER_REFERRAL_STATUS_CONCEPT_ID,
+			referralStatusConcept.getConceptId()
+		);
+		params.put(
+			ReportingConstants.PLACEHOLDER_SAMPLE_DROPOFF_CONCEPT_ID,
+			sampleDropOffConcept.getConceptId()
+		);
+		params.put(
+			ReportingConstants.PLACEHOLDER_PATHOLOGY_REQUEST_ENCOUNTER_UUID_CONCEPT_ID,
+			pathologyRequestEncounterUUID.getConceptId()
+		);
+		params.put(
+			ReportingConstants.PLACEHOLDER_PATHOLOGY_RESULTS_APPROVED_CONCEPT_ID,
+			PATHOLOGYREQUESTRESULTSAPPROVED.getConceptId()
+		);
+		params.put(
+			ReportingConstants.PLACEHOLDER_PATHOLOGIC_DIAGNOSIS_CONCEPT_ID,
+			pathologicDiagnoisis.getConceptId()
+		);
+		params.put(
+			ReportingConstants.PLACEHOLDER_HEALTH_CENTER_ATTRIBUTE_TYPE_ID,
+			healthCenterPersonAttributeType.getPersonAttributeTypeId()
+		);
+		params.put(
+			ReportingConstants.PLACEHOLDER_PATHOLOGY_REQUEST_FORM_ID,
+			pathologyRequestForm.getFormId()
+		);
+
+		// Load SQL from external file with validated parameters
+		String sql = SqlQueryLoader.loadQueryWithParams(
+			ReportingConstants.SQL_PATHOLOGY_REQUEST_REPORT,
+			params
+		);
+
+		log.debug("Loaded Pathology Request Report SQL (" + sql.length() + " characters)");
+
+		// Create dataset
 		SqlDataSetDefinition sqldsd = new SqlDataSetDefinition();
-		
-		sqldsd.setSqlQuery("select \n"
-		        + "\tp.person_id as personId,\n"
-		        + "\tp.uuid as patientUuid,\n"
-		        + "\tp.birthdate as personBirthdate,\n"
-		        + "\tp.gender as personGender,\n"
-		        + "\t(select family_name from person_name where preferred=1 and voided=0 and  enc.patient_id=person_id order by person_name_id limit 1 ) as family_name,\n"
-		        + "    (select family_name2 from person_name where preferred=1 and voided=0 and  enc.patient_id=person_id order by person_name_id limit 1 ) as family_name2,\n"
-		        + "    (select middle_name from person_name where preferred=1 and voided=0 and  enc.patient_id=person_id order by person_name_id limit 1 ) as middle_name,\n"
-		        + "    (select given_name from person_name where preferred=1 and voided=0 and  enc.patient_id=person_id order by person_name_id limit 1 ) as given_name,  \n"
-		        + "     (SELECT identifier FROM patient_identifier where patient_id=enc.patient_id and voided = 0 and identifier_type in (select patient_identifier_type_id from patient_identifier_type where name='IMB Primary Care Registration ID') limit 1) as IMBPrimaryCare, \n"
-		        + "    (select value_text from obs  where concept_id= "
-		        + telephoneNumberConcept.getConceptId()
-		        + " and voided=0 and enc.patient_id = person_id order by obs_id desc limit 1) as patientPhoneNumber,\n"
-		        + "    healthcenter.name as patientHealthCenter,\n"
-		        + "    enc.encounter_id as encounterId,\n"
-		        + "    enc.uuid as encounterUuid,\n"
-		        + "    DATE_FORMAT(enc.encounter_datetime, \"%Y/%m/%d\") as encounterDatetime, \n"
-		        + "    (select cn.name from obs o left join concept_name cn on o.value_coded=cn.concept_id  \n"
-		        + "\t\t\t\t\twhere o.concept_id= "
-		        + sampleStatusConcept.getConceptId()
-		        + " and cn.concept_name_type=\"FULLY_SPECIFIED\" and o.voided=0 and cn.voided=0 and locale=\"en\" and o.encounter_id = enc.encounter_id order by obs_id desc limit 1 ) as sampleStatusObs, \n"
-		        + "    (select o.uuid from obs o left join concept_name cn on o.value_coded=cn.concept_id  \n"
-		        + "\t\t\twhere o.concept_id= "
-		        + sampleStatusConcept.getConceptId()
-		        + "  and cn.concept_name_type=\"FULLY_SPECIFIED\" and o.voided=0 and cn.voided=0 and locale=\"en\" and o.encounter_id = enc.encounter_id order by obs_id desc limit 1 ) as sampleStatusObsUuid,\n"
-		        + "    (select cn.name from obs o left join concept_name cn on o.value_coded=cn.concept_id  \n"
-		        + "\t\t\t\t\twhere o.concept_id= "
-		        + referralStatusConcept.getConceptId()
-		        + " and cn.concept_name_type=\"FULLY_SPECIFIED\" and o.voided=0 and cn.voided=0 and locale=\"en\" and o.encounter_id = enc.encounter_id order by obs_id desc limit 1 ) as referralStatusObs, \n"
-		        + "    (select o.uuid from obs o left join concept_name cn on o.value_coded=cn.concept_id  \n"
-		        + "\t\t\t\twhere o.concept_id= "
-		        + referralStatusConcept.getConceptId()
-		        + " and cn.concept_name_type=\"FULLY_SPECIFIED\" and o.voided=0 and cn.voided=0 and locale=\"en\" and o.encounter_id = enc.encounter_id order by obs_id desc limit 1 ) as referralStatusObsUuid, \n"
-		        + "    (select cn.name from obs o left join concept_name cn on o.value_coded=cn.concept_id  \n"
-		        + "\t\t\t\t\twhere o.concept_id= "
-		        + sampleDropOffConcept.getConceptId()
-		        + " and cn.concept_name_type=\"FULLY_SPECIFIED\" and o.voided=0 and cn.voided=0 and locale=\"en\" and o.encounter_id = enc.encounter_id order by obs_id desc limit 1 ) as sampleDropoffObs, \n"
-		        + "    (select o.uuid from obs o left join concept_name cn on o.value_coded=cn.concept_id  \n"
-		        + "\t\t\t\t\twhere o.concept_id= "
-		        + sampleDropOffConcept.getConceptId()
-		        + " and cn.concept_name_type=\"FULLY_SPECIFIED\" and o.voided=0 and cn.voided=0 and locale=\"en\" and o.encounter_id = enc.encounter_id order by obs_id desc limit 1 ) as sampleDropoffObsUuid, \n"
-		        + "    (select encounter_id from obs o where o.concept_id= "
-		        + pathologyRequestEncounterUUID.getConceptId()
-		        + " and o.voided=0 and enc.uuid=value_text order by obs_id desc limit 1) as resultsEncounterId, "
-		        + "    (select resultsEnc.uuid  from obs o left join encounter resultsEnc on o.encounter_id=resultsEnc.encounter_id \n"
-		        + "\t        where o.concept_id= "
-		        + pathologyRequestEncounterUUID.getConceptId()
-		        + " and o.voided=0 and o.value_text=enc.uuid order by obs_id desc limit 1) as resultsEncounterUuid, "
-		        + "    (select Concat( pn.given_name,\"  \",pn.family_name, \" On: \", DATE_FORMAT(approvalObs.date_created, \"%d/%m/%Y\") ) from obs approvalObs left join users user on approvalObs.creator=user.user_id left join person_name pn on user.person_id=pn.person_id where  encounter_id = ( \n"
-		        + "\t\t       select encounter_id from obs o where o.concept_id= "
-		        + pathologyRequestEncounterUUID.getConceptId()
-		        + " and o.voided=0 and enc.uuid=value_text order by obs_id desc limit 1 \n"
-		        + "\t     ) and approvalObs.concept_id="
-		        + PATHOLOGYREQUESTRESULTSAPPROVED.getConceptId()
-		        + " and approvalObs.voided=0 order by obs_id DESC LIMIT 1) as approvedBy,  "
-		        + "    (select approvalObs.uuid from obs approvalObs where  encounter_id = ( \n"
-		        + "\t\t       select encounter_id from obs o where o.concept_id= "
-		        + pathologyRequestEncounterUUID.getConceptId()
-		        + " and o.voided=0 and enc.uuid=value_text order by obs_id desc limit 1 \n"
-		        + "\t     ) and approvalObs.concept_id="
-		        + PATHOLOGYREQUESTRESULTSAPPROVED.getConceptId()
-		        + " and approvalObs.voided=0 order by obs_id DESC LIMIT 1) as approvalObsUuid,  "
-		        + "    (select DATE_FORMAT(approvalObs.date_created, \"%Y/%m/%d\")  from obs approvalObs left join users user on approvalObs.creator=user.user_id left join person_name pn on user.person_id=pn.person_id where  encounter_id = ( \n"
-		        + "\t\t       select encounter_id from obs o where o.concept_id= "
-		        + pathologyRequestEncounterUUID.getConceptId()
-		        + " and o.voided=0 and enc.uuid=value_text order by obs_id desc limit 1 \n"
-		        + "\t     ) and approvalObs.concept_id="
-		        + PATHOLOGYREQUESTRESULTSAPPROVED.getConceptId()
-		        + " and approvalObs.voided=0 order by obs_id DESC LIMIT 1) as approvedDate,  "
-		        + "    (select group_concat(distinct cn.name) from obs pathologicDiagnosis left join concept_name cn on pathologicDiagnosis.value_coded=cn.concept_id where  encounter_id = ( \n"
-		        + "\t\t       select encounter_id from obs o where o.concept_id= "
-		        + pathologyRequestEncounterUUID.getConceptId()
-		        + " and o.voided=0 and enc.uuid=value_text order by obs_id desc limit 1 \n"
-		        + "\t     ) and pathologicDiagnosis.concept_id="
-		        + pathologicDiagnoisis.getConceptId()
-		        + " and pathologicDiagnosis.voided=0 and cn.concept_name_type=\"FULLY_SPECIFIED\" and cn.voided=0 and locale=\"en\") as pathologicDiagnosisObs  "
-		        +
-		        
-		        " from encounter enc \n"
-		        + "\t left join person p on enc.patient_id=p.person_id\n"
-		        + "    left join (select person_id,name,location_id,retired from person_attribute pat left join location l on pat.value=l.location_id where person_attribute_type_id= "
-		        + healthCenterPersonAttributeType.getPersonAttributeTypeId()
-		        + " and pat.voided=0 group by person_id) \n"
-		        + "\t\t\t\thealthcenter on enc.patient_id=healthcenter.person_id\n"
-		        +
-		        
-		        "where \n"
-		        + "\t enc.voided=0 "
-		        + "\tand p.voided=0 "
-		        + "    and enc.form_id= "
-		        + pathologyRequestForm.getFormId()
-		        + " and p.dead=0"
-		        + " and IF( :location IS NULL, true, healthcenter.location_id= :location) " +
-		        
-		        " order by enc.encounter_id desc ");
-		
-		sqldsd.addParameter(new Parameter("location", "Location", Location.class));
-		
-		//        Map<String, Object> mappings = new HashMap<String, Object>();
-		//        mappings.put("location", "${location}");
-		
+		sqldsd.setSqlQuery(sql);
+		sqldsd.addParameter(location);
+
 		reportDefinition.addDataSetDefinition("dsd", Mapped.mapStraightThrough(sqldsd));
+	}
+	
+	/**
+	 * Validates required configuration is present Prevents NullPointerException and provides clear
+	 * error messages
+	 * 
+	 * @throws IllegalStateException if required configuration is missing
+	 */
+	private void validateConfiguration() {
 		
+		if (telephoneNumberConcept == null || telephoneNumberConcept.getConceptId() == null) {
+			throw new IllegalStateException("Telephone number concept not configured");
+		}
+		
+		if (sampleStatusConcept == null || sampleStatusConcept.getConceptId() == null) {
+			throw new IllegalStateException("Sample status concept not configured");
+		}
+		
+		if (referralStatusConcept == null || referralStatusConcept.getConceptId() == null) {
+			throw new IllegalStateException("Referral status concept not configured");
+		}
+		
+		if (sampleDropOffConcept == null || sampleDropOffConcept.getConceptId() == null) {
+			throw new IllegalStateException("Sample drop-off concept not configured");
+		}
+		
+		if (pathologyRequestEncounterUUID == null || pathologyRequestEncounterUUID.getConceptId() == null) {
+			throw new IllegalStateException("Pathology request encounter UUID concept not configured");
+		}
+		
+		if (PATHOLOGYREQUESTRESULTSAPPROVED == null || PATHOLOGYREQUESTRESULTSAPPROVED.getConceptId() == null) {
+			throw new IllegalStateException("Pathology results approved concept not configured");
+		}
+		
+		if (pathologicDiagnoisis == null || pathologicDiagnoisis.getConceptId() == null) {
+			throw new IllegalStateException("Pathologic diagnosis concept not configured");
+		}
+		
+		if (healthCenterPersonAttributeType == null || healthCenterPersonAttributeType.getPersonAttributeTypeId() == null) {
+			throw new IllegalStateException("Health center person attribute type not configured");
+		}
+		
+		if (pathologyRequestForm == null || pathologyRequestForm.getFormId() == null) {
+			throw new IllegalStateException("Pathology request form not configured");
+		}
+		
+		log.debug("Pathology Request Report configuration validated successfully");
 	}
 	
 	private void setupProperties() {

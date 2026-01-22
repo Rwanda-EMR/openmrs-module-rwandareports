@@ -3,7 +3,7 @@
 #############################################################################
 dimensions/dim_third_party/sp_mamba_dim_third_party_create.sql
 dimensions/dim_third_party/sp_mamba_dim_third_party_insert.sql
-dimensions/dim_third_party/sp_mamba_dim_third_party_update.sql
+# dimensions/dim_third_party/sp_mamba_dim_third_party_update.sql
 dimensions/dim_third_party/sp_mamba_dim_third_party.sql
 
 dimensions/dim_department/sp_mamba_dim_department_create.sql
@@ -101,6 +101,42 @@ dimensions/dim_billing_report_columns/sp_mamba_dim_billing_report_columns_insert
 dimensions/dim_billing_report_columns/sp_mamba_dim_billing_report_columns_update.sql
 dimensions/dim_billing_report_columns/sp_mamba_dim_billing_report_columns.sql
 
+dimensions/dim_paid_service_bill_refund/sp_mamba_dim_paid_service_bill_refund_create.sql
+dimensions/dim_paid_service_bill_refund/sp_mamba_dim_paid_service_bill_refund_insert.sql
+dimensions/dim_paid_service_bill_refund/sp_mamba_dim_paid_service_bill_refund_update.sql
+dimensions/dim_paid_service_bill_refund/sp_mamba_dim_paid_service_bill_refund.sql
+
+dimensions/dim_cash_payment/sp_mamba_dim_cash_payment_create.sql
+dimensions/dim_cash_payment/sp_mamba_dim_cash_payment_insert.sql
+dimensions/dim_cash_payment/sp_mamba_dim_cash_payment_update.sql
+dimensions/dim_cash_payment/sp_mamba_dim_cash_payment.sql
+
+dimensions/dim_deposit_payment/sp_mamba_dim_deposit_payment_create.sql
+dimensions/dim_deposit_payment/sp_mamba_dim_deposit_payment_insert.sql
+dimensions/dim_deposit_payment/sp_mamba_dim_deposit_payment_update.sql
+dimensions/dim_deposit_payment/sp_mamba_dim_deposit_payment.sql
+
+dimensions/dim_patient_account/sp_mamba_dim_patient_account_create.sql
+dimensions/dim_patient_account/sp_mamba_dim_patient_account_insert.sql
+dimensions/dim_patient_account/sp_mamba_dim_patient_account_update.sql
+dimensions/dim_patient_account/sp_mamba_dim_patient_account.sql
+
+dimensions/dim_payment_refund/sp_mamba_dim_payment_refund_create.sql
+dimensions/dim_payment_refund/sp_mamba_dim_payment_refund_insert.sql
+dimensions/dim_payment_refund/sp_mamba_dim_payment_refund_update.sql
+dimensions/dim_payment_refund/sp_mamba_dim_payment_refund.sql
+
+dimensions/dim_recovery/sp_mamba_dim_recovery_create.sql
+dimensions/dim_recovery/sp_mamba_dim_recovery_insert.sql
+# dimensions/dim_recovery/sp_mamba_dim_recovery_update.sql
+dimensions/dim_recovery/sp_mamba_dim_recovery.sql
+
+dimensions/dim_transaction/sp_mamba_dim_transaction_create.sql
+dimensions/dim_transaction/sp_mamba_dim_transaction_insert.sql
+dimensions/dim_transaction/sp_mamba_dim_transaction_update.sql
+dimensions/dim_transaction/sp_mamba_dim_transaction.sql
+
+
 #############################################################################
 ##################### Billing Assessment Fact Table SPs  ####################
 #############################################################################
@@ -115,8 +151,38 @@ facts/fact_patient_service_bill_flat/sp_mamba_fact_patient_service_bill_flat_ins
 facts/fact_patient_service_bill_flat/sp_mamba_fact_patient_service_bill_flat_update.sql
 facts/fact_patient_service_bill_flat/sp_mamba_fact_patient_service_bill_flat.sql
 
-query/sp_mamba_fact_insurance_report_query.sql
+facts/fact_cashier_report/sp_mamba_fact_cashier_report_create.sql
+facts/fact_cashier_report/sp_mamba_fact_cashier_report_insert.sql
+facts/fact_cashier_report/sp_mamba_fact_cashier_report_update.sql
+facts/fact_cashier_report/sp_mamba_fact_cashier_report.sql
+
+facts/fact_cashier_report_flat/sp_mamba_fact_cashier_report_flat_create.sql
+facts/fact_cashier_report_flat/sp_mamba_fact_cashier_report_flat_insert.sql
+facts/fact_cashier_report_flat/sp_mamba_fact_cashier_report_flat_update.sql
+facts/fact_cashier_report_flat/sp_mamba_fact_cashier_report_flat.sql
+
+facts/fact_consommation_report/sp_mamba_fact_consommation_report_create.sql
+facts/fact_consommation_report/sp_mamba_fact_consommation_report_insert.sql
+facts/fact_consommation_report/sp_mamba_fact_consommation_report_update.sql
+facts/fact_consommation_report/sp_mamba_fact_consommation_report.sql
+
+facts/fact_service_revenue_report/sp_mamba_fact_service_revenue_report_create.sql
+facts/fact_service_revenue_report/sp_mamba_fact_service_revenue_report_insert.sql
+facts/fact_service_revenue_report/sp_mamba_fact_service_revenue_report_update.sql
+facts/fact_service_revenue_report/sp_mamba_fact_service_revenue_report.sql
+
+facts/fact_clinical_detailed_report/sp_mamba_fact_clinical_detailed_report_create.sql
+facts/fact_clinical_detailed_report/sp_mamba_fact_clinical_detailed_report_insert.sql
+facts/fact_clinical_detailed_report/sp_mamba_fact_clinical_detailed_report_update.sql
+facts/fact_clinical_detailed_report/sp_mamba_fact_clinical_detailed_report.sql
+
 query/sp_mamba_view_fact_insurance_report.sql
+query/sp_mamba_view_fact_thirdparty_report.sql
+query/sp_mamba_view_fact_cashier_report.sql
+# query/sp_mamba_view_fact_consommation_report.sql
+query/sp_mamba_view_fact_paymentrefunds_report.sql
+query/sp_mamba_view_fact_deposits_report.sql
+query/sp_mamba_view_fact_servicerevenue_report.sql
 
 #############################################################################
 ######## A single stored procedure that invokes (CALLs) the above SPs #######

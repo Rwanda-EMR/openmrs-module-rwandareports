@@ -1,0 +1,14 @@
+{
+  "encounter_type_uuid": "03ed005d-a10d-46ad-94a1-e695b10b4795",
+  "flat_table_name": "mamba_flat_encounter_diagnosis",
+  "report_name": "Diagnosis",
+  "table_columns": {
+    "chief_complaint": "3ceaee08-26fe-102b-80cb-0017a47871b2",
+    "treatment": "3cd9491e-26fe-102b-80cb-0017a47871b2",
+    "main_diagnosis": "952b3fd4-b89e-4801-9b51-9b30bc83adce",
+    "secondary_diagnosis": "afb8006f-e7c4-45bd-82bd-16f6e4b4b51d",
+    "presumptive_diagnosis": "0ae23a5a-15f5-102d-96e4-000c29c2a5d7",
+    "catchment_area": "f8c17ed2-38e4-4010-bd10-e27c99185eb4",
+    "case_status": "14183f94-59b2-4b62-bad7-2c788a21a422"
+  }
+}

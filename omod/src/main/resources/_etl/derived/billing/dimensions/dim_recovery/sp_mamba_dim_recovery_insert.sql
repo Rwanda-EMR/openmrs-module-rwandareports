@@ -1,0 +1,48 @@
+-- $BEGIN
+
+  INSERT INTO mamba_dim_recovery (recovery_id,
+                      insurance_id,
+                      third_party_id,
+                      start_period,
+                      end_period,
+                      status,
+                      due_amount,
+                      submission_date,
+                      verification_date,
+                      paid_amount,
+                      payement_date,
+                      partly_pay_reason,
+                      no_payment_reason,
+                      observation,
+                      creator,
+                      created_date,
+                      changed_by,
+                      retired,
+                      retired_by,
+                      retire_date,
+                      retire_reason)
+
+  SELECT recovery_id,
+      insurance_id,
+      third_party_id,
+      start_period,
+      end_period,
+      status,
+      due_amount,
+      submission_date,
+      verification_date,
+      paid_amount,
+      payement_date,
+      partly_pay_reason,
+      no_payment_reason,
+      observation,
+      creator,
+      created_date,
+      changed_by,
+      retired,
+      retired_by,
+      retire_date,
+      retire_reason
+  FROM mamba_source_db.moh_bill_recovery;
+
+-- $END

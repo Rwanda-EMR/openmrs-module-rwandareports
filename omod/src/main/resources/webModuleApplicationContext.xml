@@ -21,6 +21,9 @@
            http://www.springframework.org/schema/util
            http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 
+    <!-- Scan web controllers for @Controller and @RequestMapping annotations -->
+    <context:component-scan base-package="org.openmrs.module.rwandareports.web.controller" />
+
     <bean id="rwandaReportUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
     <property name="order"><value>44</value></property>
     	<property name="mappings">

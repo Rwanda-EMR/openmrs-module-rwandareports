@@ -12,6 +12,8 @@ import org.openmrs.module.reporting.evaluation.parameter.Parameter;
 import org.openmrs.module.reporting.report.ReportDesign;
 import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.reporting.report.service.ReportService;
+import org.openmrs.module.rwandareports.reporting.util.ReportingConstants;
+import org.openmrs.module.rwandareports.reporting.util.SqlQueryLoader;
 
 public class SetupGenericDrugReport implements SetupReport {
 	
@@ -25,124 +27,185 @@ public class SetupGenericDrugReport implements SetupReport {
 		return null;
 	}
 	
+	/**
+	 * Sets up generic drug reports Creates report definitions and CSV designs
+	 * 
+	 * @throws Exception if report setup fails
+	 */
 	public void setup() throws Exception {
+		log.info("Setting up Generic Drug Reports...");
 		
-		ReportDefinition rd = createReportDefinitionByDate();
-		ReportDesign designCSV = Helper.createCsvReportDesign(rd, "Generic Drug Report.csv_");
-		Helper.saveReportDesign(designCSV);
-		
-		ReportDefinition rd2 = createReportDefinitionByDrugAndDates();
-		ReportDesign designCSV2 = Helper.createCsvReportDesign(rd2, "Generic Drug Report.csv_");
-		Helper.saveReportDesign(designCSV2);
-		
-		ReportDefinition rd3 = createReportDefinitionByProgramAndDates();
-		ReportDesign designCSV3 = Helper.createCsvReportDesign(rd3, "Generic Drug Report.csv_");
-		Helper.saveReportDesign(designCSV3);
+		try {
+			ReportDefinition rd = createReportDefinitionByDate();
+			ReportDesign designCSV = Helper.createCsvReportDesign(rd, ReportingConstants.DESIGN_GENERIC_DRUG_CSV);
+			Helper.saveReportDesign(designCSV);
+			
+			ReportDefinition rd2 = createReportDefinitionByDrugAndDates();
+			ReportDesign designCSV2 = Helper.createCsvReportDesign(rd2, ReportingConstants.DESIGN_GENERIC_DRUG_CSV);
+			Helper.saveReportDesign(designCSV2);
+			
+			ReportDefinition rd3 = createReportDefinitionByProgramAndDates();
+			ReportDesign designCSV3 = Helper.createCsvReportDesign(rd3, ReportingConstants.DESIGN_GENERIC_DRUG_CSV);
+			Helper.saveReportDesign(designCSV3);
+			log.info("Generic Drug Reports created successfully");
+		}
+		catch (Exception e) {
+			log.error("Failed to setup Generic Drug Reports", e);
+			throw e;
+		}
 	}
 	
+	/**
+	 * Deletes all generic drug report definitions
+	 */
 	public void delete() {
-		Helper.purgeReportDefinition("Generic Drug Report by Dates");
-		Helper.purgeReportDefinition("Generic Drug Report by Dates and drug");
-		Helper.purgeReportDefinition("Generic Drug Report by Dates and program");
+		log.info("Deleting Generic Drug Reports...");
+		Helper.purgeReportDefinition(ReportingConstants.REPORT_GENERIC_DRUG_BY_DATES);
+		Helper.purgeReportDefinition(ReportingConstants.REPORT_GENERIC_DRUG_BY_DRUG);
+		Helper.purgeReportDefinition(ReportingConstants.REPORT_GENERIC_DRUG_BY_PROGRAM);
+		log.info("Generic Drug Reports deleted successfully");
 	}
 	
+	/**
+	 * Creates Generic Drug Report by Dates definition
+	 * 
+	 * @return configured ReportDefinition
+	 */
 	private ReportDefinition createReportDefinitionByDate() {
+		log.debug("Creating Generic Drug Report by Dates definition...");
+		
 		ReportDefinition reportDefinition = new ReportDefinition();
-		reportDefinition.setName("Generic Drug Report by Dates");
-		reportDefinition.addParameter(new Parameter("startDate", "From:", Date.class));
-		reportDefinition.addParameter(new Parameter("endDate", "To:", Date.class));
+		reportDefinition.setName(ReportingConstants.REPORT_GENERIC_DRUG_BY_DATES);
+		reportDefinition.addParameter(new Parameter(ReportingConstants.PARAM_START_DATE,
+		        ReportingConstants.PARAM_START_DATE_LABEL, Date.class));
+		reportDefinition.addParameter(new Parameter(ReportingConstants.PARAM_END_DATE,
+		        ReportingConstants.PARAM_END_DATE_LABEL, Date.class));
 		
 		createDataSetDefinitionByDate(reportDefinition);
-		
 		Helper.saveReportDefinition(reportDefinition);
 		
 		return reportDefinition;
 	}
 	
+	/**
+	 * Creates Generic Drug Report by Dates and Drug definition
+	 * 
+	 * @return configured ReportDefinition
+	 */
 	private ReportDefinition createReportDefinitionByDrugAndDates() {
+		log.debug("Creating Generic Drug Report by Dates and Drug definition...");
 		
 		ReportDefinition reportDefinition = new ReportDefinition();
-		reportDefinition.setName("Generic Drug Report by Dates and drug");
-		reportDefinition.addParameter(new Parameter("startDate", "From:", Date.class));
-		reportDefinition.addParameter(new Parameter("endDate", "To:", Date.class));
+		reportDefinition.setName(ReportingConstants.REPORT_GENERIC_DRUG_BY_DRUG);
+		reportDefinition.addParameter(new Parameter(ReportingConstants.PARAM_START_DATE,
+		        ReportingConstants.PARAM_START_DATE_LABEL, Date.class));
+		reportDefinition.addParameter(new Parameter(ReportingConstants.PARAM_END_DATE,
+		        ReportingConstants.PARAM_END_DATE_LABEL, Date.class));
 		
 		createDataSetDefinitionByDrugAndDates(reportDefinition);
-		
 		Helper.saveReportDefinition(reportDefinition);
 		
 		return reportDefinition;
 	}
 	
+	/**
+	 * Creates Generic Drug Report by Dates and Program definition
+	 * 
+	 * @return configured ReportDefinition
+	 */
 	private ReportDefinition createReportDefinitionByProgramAndDates() {
+		log.debug("Creating Generic Drug Report by Dates and Program definition...");
 		
 		ReportDefinition reportDefinition = new ReportDefinition();
-		reportDefinition.setName("Generic Drug Report by Dates and program");
-		reportDefinition.addParameter(new Parameter("startDate", "From:", Date.class));
-		reportDefinition.addParameter(new Parameter("endDate", "To:", Date.class));
+		reportDefinition.setName(ReportingConstants.REPORT_GENERIC_DRUG_BY_PROGRAM);
+		reportDefinition.addParameter(new Parameter(ReportingConstants.PARAM_START_DATE,
+		        ReportingConstants.PARAM_START_DATE_LABEL, Date.class));
+		reportDefinition.addParameter(new Parameter(ReportingConstants.PARAM_END_DATE,
+		        ReportingConstants.PARAM_END_DATE_LABEL, Date.class));
 		
 		createDataSetDefinitionByProgramAndDates(reportDefinition);
-		
 		Helper.saveReportDefinition(reportDefinition);
 		
 		return reportDefinition;
 	}
 	
+	/**
+	 * Creates dataset definition for Generic Drug Report by Dates Uses external SQL file
+	 * 
+	 * @param reportDefinition the report definition to add dataset to
+	 */
 	private void createDataSetDefinitionByDate(ReportDefinition reportDefinition) {
 		
+		// Load SQL from external file
+		String sql = SqlQueryLoader.loadQuery(ReportingConstants.SQL_GENERIC_DRUG_REPORT_BY_DATES);
+		log.debug("Loaded Generic Drug Report by Dates SQL (" + sql.length() + " characters)");
+		
+		// Create dataset
 		SqlDataSetDefinition sqldsd = new SqlDataSetDefinition();
-		sqldsd.setSqlQuery("select o.patient_id,d.name,dro.dose,d.strength,o.date_activated,o.date_stopped,o.auto_expire_date,d.route,o.voided from orders o "
-		        + "inner join drug_order dro on o.order_id=dro.order_id "
-		        + "left join drug d on dro.drug_inventory_id=d.drug_id "
-		        + "left join patient P on o.patient_id=P.patient_id"
-		        + " where o.date_activated>=:startDate and o.date_activated<=:endDate and P.voided=0 and o.voided=0");
-		sqldsd.addParameter(new Parameter("startDate", "From:", Date.class));
-		sqldsd.addParameter(new Parameter("endDate", "To:", Date.class));
+		sqldsd.setSqlQuery(sql);
+		sqldsd.addParameter(new Parameter(ReportingConstants.PARAM_START_DATE, ReportingConstants.PARAM_START_DATE_LABEL,
+		        Date.class));
+		sqldsd.addParameter(new Parameter(ReportingConstants.PARAM_END_DATE, ReportingConstants.PARAM_END_DATE_LABEL,
+		        Date.class));
 		
 		reportDefinition.addDataSetDefinition("dsd", Mapped.mapStraightThrough(sqldsd));
-		
 	}
 	
+	/**
+	 * Creates dataset definition for Generic Drug Report by Drug and Dates Uses external SQL file
+	 * 
+	 * @param reportDefinition the report definition to add dataset to
+	 */
 	private void createDataSetDefinitionByDrugAndDates(ReportDefinition reportDefinition) {
 		
-		Parameter drug = new Parameter("Drug", "Drug", Drug.class);
+		// Define parameters
+		Parameter drug = new Parameter(ReportingConstants.PARAM_DRUG, "Drug", Drug.class);
 		drug.setRequired(false);
 		reportDefinition.addParameter(drug);
 		
+		// Load SQL from external file
+		String sql = SqlQueryLoader.loadQuery(ReportingConstants.SQL_GENERIC_DRUG_REPORT_BY_DRUG);
+		log.debug("Loaded Generic Drug Report by Drug SQL (" + sql.length() + " characters)");
+		
+		// Create dataset
 		SqlDataSetDefinition sqldsd = new SqlDataSetDefinition();
-		sqldsd.setSqlQuery("select o.patient_id,d.name,dro.dose,d.strength,o.date_activated,o.date_stopped,o.auto_expire_date,d.route,o.voided from orders o "
-		        + "inner join drug_order dro on o.order_id=dro.order_id "
-		        + "left join drug d on dro.drug_inventory_id=d.drug_id "
-		        + "left join patient P on o.patient_id=P.patient_id"
-		        + " where o.date_activated>=:startDate and o.date_activated<=:endDate and d.drug_id=:Drug and P.voided=0 and o.voided=0");
-		sqldsd.addParameter(new Parameter("startDate", "From:", Date.class));
-		sqldsd.addParameter(new Parameter("endDate", "To:", Date.class));
+		sqldsd.setSqlQuery(sql);
+		sqldsd.addParameter(new Parameter(ReportingConstants.PARAM_START_DATE, ReportingConstants.PARAM_START_DATE_LABEL,
+		        Date.class));
+		sqldsd.addParameter(new Parameter(ReportingConstants.PARAM_END_DATE, ReportingConstants.PARAM_END_DATE_LABEL,
+		        Date.class));
 		sqldsd.addParameter(drug);
 		
 		reportDefinition.addDataSetDefinition("dsddrug", Mapped.mapStraightThrough(sqldsd));
-		
 	}
 	
+	/**
+	 * Creates dataset definition for Generic Drug Report by Program and Dates Uses external SQL
+	 * file
+	 * 
+	 * @param reportDefinition the report definition to add dataset to
+	 */
 	private void createDataSetDefinitionByProgramAndDates(ReportDefinition reportDefinition) {
 		
-		Parameter prog = new Parameter("programs", "Program", Program.class);
+		// Define parameters
+		Parameter prog = new Parameter(ReportingConstants.PARAM_PROGRAMS, "Program", Program.class);
 		prog.setRequired(false);
 		reportDefinition.addParameter(prog);
 		
-		SqlDataSetDefinition sqldsd = new SqlDataSetDefinition();
-		sqldsd.setSqlQuery("select o.patient_id,d.name,dro.dose,d.strength,o.date_activated,o.date_stopped,o.auto_expire_date,d.route,o.voided from orders o "
-		        + "inner join drug_order dro on o.order_id=dro.order_id "
-		        + "inner join patient_program pp on o.patient_id=pp.patient_id "
-		        + "left join drug d on dro.drug_inventory_id=d.drug_id "
-		        + "left join patient P on o.patient_id=P.patient_id"
-		        + " where o.date_activated>=:startDate and o.date_activated<=:endDate and pp.program_id=:programs "
-		        + "and P.voided=0 and o.voided=0 and pp.voided=0");
+		// Load SQL from external file
+		String sql = SqlQueryLoader.loadQuery(ReportingConstants.SQL_GENERIC_DRUG_REPORT_BY_PROGRAM);
+		log.debug("Loaded Generic Drug Report by Program SQL (" + sql.length() + " characters)");
 		
-		sqldsd.addParameter(new Parameter("startDate", "From:", Date.class));
-		sqldsd.addParameter(new Parameter("endDate", "To:", Date.class));
+		// Create dataset
+		SqlDataSetDefinition sqldsd = new SqlDataSetDefinition();
+		sqldsd.setSqlQuery(sql);
+		sqldsd.addParameter(new Parameter(ReportingConstants.PARAM_START_DATE, ReportingConstants.PARAM_START_DATE_LABEL,
+		        Date.class));
+		sqldsd.addParameter(new Parameter(ReportingConstants.PARAM_END_DATE, ReportingConstants.PARAM_END_DATE_LABEL,
+		        Date.class));
 		sqldsd.addParameter(prog);
 		
 		reportDefinition.addDataSetDefinition("dsdprogram", Mapped.mapStraightThrough(sqldsd));
-		
 	}
 	
 }

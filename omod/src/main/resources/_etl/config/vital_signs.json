@@ -1,0 +1,10 @@
+{
+  "encounter_type_uuid": "a4b7b206-da96-4c54-83bf-6fb31551a993",
+  "flat_table_name": "mamba_flat_encounter_vital_signs",
+  "report_name": "Vital Signs",
+  "table_columns": {
+    "weight": "3ce93b62-26fe-102b-80cb-0017a47871b2",
+    "height": "3ce93cf2-26fe-102b-80cb-0017a47871b2",
+    "temperature": "3ce939d2-26fe-102b-80cb-0017a47871b2"
+  }
+}

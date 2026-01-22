@@ -20,8 +20,8 @@ CREATE TABLE mamba_dim_patient_service_bill
     created_date              DATETIME       null,
 
     PRIMARY KEY (id)
-)
-    CHARSET = UTF8MB4;
+);
+
 
 CREATE INDEX mamba_dim_patient_service_bill_patient_service_bill_id_index
     ON mamba_dim_patient_service_bill (patient_service_bill_id);
@@ -37,5 +37,8 @@ CREATE INDEX mamba_dim_patient_service_bill_service_id_index
 
 CREATE INDEX mamba_dim_patient_service_bill_voided_index
     ON mamba_dim_patient_service_bill (voided);
+
+CREATE INDEX mamba_dim_patient_service_consommation_voided
+    ON mamba_dim_patient_service_bill (consommation_id, voided);                                                                                                             
 
 -- $END

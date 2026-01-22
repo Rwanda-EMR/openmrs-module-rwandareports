@@ -18,7 +18,171 @@
             "name": "end_date",
             "type": "DATE"
           }
-        ]
+        ],
+        "paginate": true
+      }
+    },
+    {
+      "report_name": "Billing Consommation Report",
+      "report_id": "consommation_report",
+      "report_sql": {
+        "sql_query": "SELECT * FROM mamba_fact_consommation_report WHERE insurancename = company AND date BETWEEN start_date AND end_date",
+        "query_params": [
+          {
+            "name": "company",
+            "type": "VARCHAR(255)"
+          },
+          {
+            "name": "start_date",
+            "type": "DATE"
+          },
+          {
+            "name": "end_date",
+            "type": "DATE"
+          }
+        ],
+        "paginate": true
+      }
+    },
+    {
+      "report_name": "Third Party Report",
+      "report_id": "thirdparty_report",
+      "report_sql": {
+        "sql_query": "SELECT * FROM mamba_view_fact_thirdparty_report WHERE company_name = insurance_name AND admission_date BETWEEN start_date AND end_date",
+        "query_params": [
+          {
+            "name": "insurance_name",
+            "type": "VARCHAR(255)"
+          },
+          {
+            "name": "start_date",
+            "type": "DATE"
+          },
+          {
+            "name": "end_date",
+            "type": "DATE"
+          }
+        ],
+        "paginate": true
+      }
+    },
+    {
+      "report_name": "Billing Insurance firms Report",
+      "report_id": "insurance_firm_report",
+      "report_sql": {
+        "sql_query": "SELECT insurance_id, mamba_dim_insurance.current_insurance_rate, mamba_dim_insurance.current_insurance_rate_flat_fee, category, name FROM mamba_dim_insurance",
+        "query_params": [],
+        "paginate": false
+      }
+    },
+    {
+      "report_name": "Payment Refund Report",
+      "report_id": "payment_refund_report",
+      "report_sql": {
+        "sql_query": "WITH refund_data AS ( SELECT * FROM mamba_view_fact_paymentrefunds_report WHERE cashier_name = collector AND submitted_on BETWEEN start_date AND end_date)SELECT refund_id,CASE WHEN rn = 1 THEN payment_id ELSE NULL END AS payment_id,CASE WHEN rn = 1 THEN cashier_name ELSE NULL END AS cashier_name,CASE WHEN rn = 1 THEN submitted_on ELSE NULL END AS submitted_on,CASE WHEN rn = 1 THEN approvedby ELSE NULL END AS approvedby,CASE WHEN rn = 1 THEN confirmed_by ELSE NULL END AS confirmed_by,service_name,qty_paid,refund_qty,unit_price,refund_reason FROM refund_data ORDER BY refund_id, rn",
+        "query_params": [
+          {
+            "name": "collector",
+            "type": "VARCHAR(255)"
+          },
+          {
+            "name": "start_date",
+            "type": "DATE"
+          },
+          {
+            "name": "end_date",
+            "type": "DATE"
+          }
+        ],
+        "paginate": true
+      }
+    },
+    {
+      "report_name": "Deposits Report",
+      "report_id": "deposits_report",
+      "report_sql": {
+        "sql_query": "SELECT * FROM mamba_view_fact_deposits_report WHERE date BETWEEN start_date AND end_date AND reason = type OR collector = collector",
+        "query_params": [
+          {
+            "name": "collector",
+            "type": "VARCHAR(255)"
+          },
+          {
+            "name": "type",
+            "type": "VARCHAR(255)"
+          },
+          {
+            "name": "start_date",
+            "type": "DATE"
+          },
+          {
+            "name": "end_date",
+            "type": "DATE"
+          }
+        ],
+        "paginate": true
+      }
+    },
+    {
+      "report_name": "Service Revenue Report",
+      "report_id": "servicerevenue_report",
+      "report_sql": {
+        "sql_query": "SELECT * FROM mamba_view_fact_service_report WHERE service_date BETWEEN start_date AND end_date",
+        "query_params": [
+          {
+            "name": "start_date",
+            "type": "DATE"
+          },
+          {
+            "name": "end_date",
+            "type": "DATE"
+          }
+        ],
+        "paginate": true
+      }
+    },
+    {
+      "report_name": "Cashier Report",
+      "report_id": "cashier_report",
+      "report_sql": {
+        "sql_query": "SELECT * FROM mamba_view_fact_cashier_report WHERE date BETWEEN start_date AND end_date",
+        "query_params": [
+          {
+            "name": "start_date",
+            "type": "DATE"
+          },
+          {
+            "name": "end_date",
+            "type": "DATE"
+          }
+        ],
+        "paginate": true
+      }
+    },
+    {
+      "report_name": "Clinical Detailed Report",
+      "report_id": "clinical_detailed_report",
+      "report_sql": {
+        "sql_query": "SELECT * FROM mamba_fact_clinical_detailed_report WHERE patient_id = COALESCE(patient_identifier, patient_id) AND (start_date IS NULL OR end_date IS NULL OR admission_date BETWEEN start_date AND end_date) AND insurance_id = COALESCE(insurance_identifier, insurance_id)",
+        "query_params": [
+          {
+            "name": "patient_identifier",
+            "type": "VARCHAR(255)"
+          },
+          {
+            "name": "start_date",
+            "type": "DATE"
+          },
+          {
+            "name": "end_date",
+            "type": "DATE"
+          },
+          {
+            "name": "insurance_identifier",
+            "type": "INT"
+          }
+        ],
+        "paginate": true
       }
     }
   ]

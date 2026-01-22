@@ -1,44 +1,138 @@
 -- $BEGIN
 
--- Fetch and set property values from global_props table
-SET @insurance_property_value = (SELECT property_value
-                                 FROM mamba_source_db.global_property
-                                 WHERE property = 'mohbilling.insuranceReportColumns');
-SET @imaging_property_value = (SELECT property_value
-                               FROM mamba_source_db.global_property
-                               WHERE property = 'mohbilling.IMAGING');
-SET @procedures_property_value = (SELECT property_value
-                                  FROM mamba_source_db.global_property
-                                  WHERE property = 'mohbilling.PROCEDURES');
+-- =============================================================================
+-- Comprehensive Insert for All Report Types
+-- Populates: mamba_dim_billing_report_columns
+-- Strategy: Service categorization with order preservation
+-- Supports: INSURANCE, CASHIER, THIRDPARTY, SERVICE REVENUE report types
+-- =============================================================================
 
--- Create a temporary table to store the service_ids and their group names
-CREATE TEMPORARY TABLE temp_service_groups AS
-SELECT service_id,
-       CASE
-           WHEN FIND_IN_SET(service_id, @insurance_property_value) THEN 'INSURANCE'
-           WHEN FIND_IN_SET(service_id, @imaging_property_value) THEN 'IMAGING'
-           WHEN FIND_IN_SET(service_id, @procedures_property_value) THEN 'PROCED.'
-           END AS group_name
+-- -----------------------------------------------------------------------------
+-- 1. Fetch Global Properties
+-- -----------------------------------------------------------------------------
+SET @insurance_columns = (
+    SELECT property_value
+    FROM mamba_source_db.global_property
+    WHERE property = 'mohbilling.insuranceReportColumns'
+);
+
+SET @cashier_columns = (
+    SELECT property_value
+    FROM mamba_source_db.global_property
+    WHERE property = 'mohbilling.cashierReportColumns'
+);
+
+SET @thirdparty_columns = (
+    SELECT property_value
+    FROM mamba_source_db.global_property
+    WHERE property = 'mohbilling.thirdPartyReportColumns'
+);
+
+SET @servicerevenue_columns = (
+    SELECT property_value
+    FROM mamba_source_db.global_property
+    WHERE property = 'mohbilling.servicesReportColumns'
+);
+
+SET @imaging_services = (
+    SELECT property_value
+    FROM mamba_source_db.global_property
+    WHERE property = 'mohbilling.IMAGING'
+);
+
+SET @procedure_services = (
+    SELECT property_value
+    FROM mamba_source_db.global_property
+    WHERE property = 'mohbilling.PROCEDURES'
+);
+
+-- -----------------------------------------------------------------------------
+-- 2. Create Service Categorization Lookup (Reusable across all report types)
+-- -----------------------------------------------------------------------------
+DROP TEMPORARY TABLE IF EXISTS temp_service_categories;
+CREATE TEMPORARY TABLE temp_service_categories AS
+SELECT
+    service_id,
+    CASE
+        WHEN FIND_IN_SET(service_id, @imaging_services) THEN 'IMAGING'
+        WHEN FIND_IN_SET(service_id, @procedure_services) THEN 'PROCED.'
+        ELSE NULL  -- Will be set to report_type during insert
+    END AS service_category
 FROM mamba_dim_hop_service
-WHERE FIND_IN_SET(service_id, @insurance_property_value)
-   OR FIND_IN_SET(service_id, @imaging_property_value)
-   OR FIND_IN_SET(service_id, @procedures_property_value);
--- preserves order of insertion (use on small datasets)
+WHERE FIND_IN_SET(service_id, @imaging_services)
+   OR FIND_IN_SET(service_id, @procedure_services);
 
-
-INSERT INTO mamba_dim_billing_report_columns (report_type, hop_service_id, column_name, group_column_name)
-SELECT 'INSURANCE'    AS report_type,
-       h.service_id   AS hop_service_id,
-       h.name         AS column_name,
-       tsg.group_name AS group_column_name
+-- -----------------------------------------------------------------------------
+-- 3. Insert INSURANCE Report Columns
+-- Expected: 18 rows (mohbilling.insuranceReportColumns)
+-- Grouping: INSURANCE (individual), IMAGING (aggregate), PROCED. (aggregate)
+-- -----------------------------------------------------------------------------
+INSERT INTO mamba_dim_billing_report_columns
+    (report_type, hop_service_id, column_name, group_column_name)
+SELECT
+    'INSURANCE' AS report_type,
+    h.service_id AS hop_service_id,
+    COALESCE(NULLIF(TRIM(h.name), ''), CONCAT('SERVICE_', h.service_id)) AS column_name,
+    COALESCE(tsc.service_category, 'INSURANCE') AS group_column_name
 FROM mamba_dim_hop_service h
-         JOIN temp_service_groups tsg ON h.service_id = tsg.service_id
-ORDER BY FIND_IN_SET(hop_service_id,
-                     CONCAT_WS(',', @insurance_property_value, @imaging_property_value, @procedures_property_value));
+LEFT JOIN temp_service_categories tsc ON h.service_id = tsc.service_id
+WHERE FIND_IN_SET(h.service_id, @insurance_columns)
+ORDER BY FIND_IN_SET(h.service_id, @insurance_columns);
 
-DROP TEMPORARY TABLE IF EXISTS temp_service_groups;
+-- -----------------------------------------------------------------------------
+-- 4. Insert CASHIER Report Columns
+-- Expected: 19 rows (mohbilling.cashierReportColumns)
+-- Grouping: CASHIER (individual), IMAGING (aggregate), PROCED. (aggregate)
+-- -----------------------------------------------------------------------------
+INSERT INTO mamba_dim_billing_report_columns
+    (report_type, hop_service_id, column_name, group_column_name)
+SELECT
+    'CASHIER' AS report_type,
+    h.service_id AS hop_service_id,
+    COALESCE(NULLIF(TRIM(h.name), ''), CONCAT('SERVICE_', h.service_id)) AS column_name,
+    COALESCE(tsc.service_category, 'CASHIER') AS group_column_name
+FROM mamba_dim_hop_service h
+LEFT JOIN temp_service_categories tsc ON h.service_id = tsc.service_id
+WHERE FIND_IN_SET(h.service_id, @cashier_columns)
+ORDER BY FIND_IN_SET(h.service_id, @cashier_columns);
 
+-- -----------------------------------------------------------------------------
+-- 5. Insert THIRDPARTY Report Columns
+-- Expected: 23 rows (mohbilling.thirdPartyReportColumns)
+-- Grouping: THIRDPARTY (individual), IMAGING (aggregate), PROCED. (aggregate)
+-- -----------------------------------------------------------------------------
+INSERT INTO mamba_dim_billing_report_columns
+    (report_type, hop_service_id, column_name, group_column_name)
+SELECT
+    'THIRDPARTY' AS report_type,
+    h.service_id AS hop_service_id,
+    COALESCE(NULLIF(TRIM(h.name), ''), CONCAT('SERVICE_', h.service_id)) AS column_name,
+    COALESCE(tsc.service_category, 'THIRDPARTY') AS group_column_name
+FROM mamba_dim_hop_service h
+LEFT JOIN temp_service_categories tsc ON h.service_id = tsc.service_id
+WHERE FIND_IN_SET(h.service_id, @thirdparty_columns)
+ORDER BY FIND_IN_SET(h.service_id, @thirdparty_columns);
 
--- insert another type here
+-- -----------------------------------------------------------------------------
+-- 6. Insert SERVICE_REVENUE Report Columns
+-- Expected: 18 rows (mohbilling.servicesReportColumns)
+-- Grouping: SERVICE_REVENUE (individual), IMAGING (aggregate), PROCED. (aggregate)
+-- -----------------------------------------------------------------------------
+INSERT INTO mamba_dim_billing_report_columns
+(report_type, hop_service_id, column_name, group_column_name)
+SELECT
+    'SERVICE_REVENUE' AS report_type,
+    h.service_id AS hop_service_id,
+    COALESCE(NULLIF(TRIM(h.name), ''), CONCAT('SERVICE_', h.service_id)) AS column_name,
+    COALESCE(tsc.service_category, 'SERVICE_REVENUE') AS group_column_name
+FROM mamba_dim_hop_service h
+         LEFT JOIN temp_service_categories tsc ON h.service_id = tsc.service_id
+WHERE FIND_IN_SET(h.service_id, @servicerevenue_columns)
+ORDER BY FIND_IN_SET(h.service_id, @servicerevenue_columns);
+
+-- -----------------------------------------------------------------------------
+-- 7. Cleanup Temporary Objects
+-- -----------------------------------------------------------------------------
+DROP TEMPORARY TABLE IF EXISTS temp_service_categories;
 
 -- $END
